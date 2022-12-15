@@ -22,9 +22,9 @@ if(!isset($_SESSION['logged']) && $routesLogin === false){
 }
 */
 
-$classControll = $routes[$route];
+[$classControll, $function] = $routes[$route];
 
 $controll = new $classControll;
 
-$controll->processRequest();
+$controll->$function();
 

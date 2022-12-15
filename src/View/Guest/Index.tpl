@@ -1,4 +1,4 @@
-{extends file="TemplateGuestSale.tpl"}
+{extends file="Template/TemplateGuestSale.tpl"}
 
 {block name=main}
     <nav class="row d-flex justify-content-between">
@@ -13,30 +13,33 @@
         </div>
     </nav>
 
-    <div class="row card-container template-card-destination">
+    <div class="row card-container">
 
-        {foreach $carros as $carro}
+        {foreach $cars as $car}
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                 <div class="card bg-preto">
                     <div class="card-header text-white p-0">
                         <div class="p-3 d-flex justify-content-end">
                             <p class=" mb-0 position-relative ">
                                 <i class="fas fa-user-alt p-2"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark template-card-seat">
-                                    {$carro.seat}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                                    {$car.seat}
                                 </span>
                             </p>
                         </div>
                     </div>
-                    <img src={$carro.img} class="card-img-top px-1 template-card-figure" alt="">
+                    <img src="./assets/guest/img/uploads/cars/{$car.img}.jpg" class="card-img-top px-1" alt="">
                     <div class="card-body text-white">
                         <div class="row px-1">
-                            <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 template-card-name">
-                                {$carro.name}
+                            <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 d-flex align-self-center">
+                                {$car.name}
                             </p>
-                            <button class="col-sm-12 col-xl-5 button-red-white py-1 text-white template-card-price" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                {$carro.price}
-                            </button>
+
+                            <a class="col-sm-12 col-xl-5" href="/compra?id={$car.id}">
+                            <button class="button-red-white py-1 text-white">R$ {$car.price|number_format:2:',':'.'}</button>
+                            </a>
+                            
+                            </a>
                         </div>
                     </div>
                 </div>

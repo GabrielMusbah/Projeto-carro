@@ -8,7 +8,9 @@ trait RenderHtml
     {
         require __DIR__ . './../../Config/View.php';
 
-        $smarty->assign('listVar', $routeListVar);
+        foreach($routeListVar as $key => $value){
+            $smarty->assign($key, $value);
+        }
 
         $smarty->display($routeTemplate);
 

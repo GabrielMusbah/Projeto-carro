@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="icon" type="imagem/png" href="/img/icon.png" />
-    <title>Legendary Motor Sport</title>
+    <link rel="icon" type="imagem/png" href="/./assets/guest/img/icon.png" />
+    <title>Legendary Motor Sport - {$title}</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
         <div class="container mb-4">
             <div class="row px-1">
                 <div class="col-sm-12 col-md-6 col-lg-4 p-4">
-                    <img class="img-fluid" src="img/legendary-logo.png" alt="">
+                    <img class="img-fluid" src="./assets/guest/img/legendary-logo.png" alt="">
                     <p class="text-red text-shadow text-center m-0">
                         CONFIRA NOSSOS CARROS TOPO DE LINHA
                     </p>
@@ -41,15 +41,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 row d-flex justify-content-around p-3">
-                    <img src="img/icon/IconFerrari.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconLamborghini.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconMazda.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconBmw.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconMercedes.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconMaserati.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconJeep.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconVolvo.png" style="width: 100px;" alt="">
-                    <img src="img/icon/IconToyota.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconFerrari.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconLamborghini.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconMazda.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconBmw.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconMercedes.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconMaserati.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconJeep.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconVolvo.png" style="width: 100px;" alt="">
+                    <img src="./assets/guest/img/icon/IconToyota.png" style="width: 100px;" alt="">
                 </div>
                 <h3 class="text-center p-2 pt-0 m-0 text-white col-12">© 2022 Musbah Saleh</h3>
             </div>

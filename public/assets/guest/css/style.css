@@ -2,3 +2,79 @@ body {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/guest/img/FundoMain.png');
     min-width: 300px;
 }
+
+header {
+    background: url('/assets/guest/img/header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.border-header {
+    border-top: 4px solid #8c2521;
+    border-bottom: 4px solid #8c2521;
+}
+
+
+.border-login {
+    border: 2px solid #8c2521;
+    outline: 1px solid black;
+}
+
+.bg-login {
+    background-color: #230403;
+}
+
+.bg-preto {
+    background-color: black;
+    width: 100%;
+}
+
+.m-main {
+    margin-top: -30px;
+}
+
+.bg-main {
+    background-color: #230403;
+}
+
+.border-main {
+    border: 2px solid #8c2521;
+    outline: 1px solid black;
+}
+
+.text-red {
+    color: #8c0203;
+    font-weight: 500;
+}
+
+.text-shadow {
+    text-shadow:#000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px;
+}
+
+.bg-preto {
+    background-color: #000!important;
+}
+
+.button-red-white {
+    background-color: #8c2521!important;
+    border: none!important;
+    border-radius: 5px!important;
+    color: white!important;
+}
+
+@font-face {
+    font-family: moneyGta;
+    src: url('font-gta.ttf')format('opentype');
+}
+
+.text-money {
+    font-family: moneyGta;
+    color: white;
+    text-shadow: #000 3px 0 10px;
+    font-size: 25px;
+}
+
+.bg-border-modal-buy-make {
+    border: 2px solid #8c2521!important;
+    background-color: #52100e!important;
+}
