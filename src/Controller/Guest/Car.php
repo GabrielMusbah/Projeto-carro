@@ -8,7 +8,7 @@ class Car
 {
     use RenderHtml;
 
-    public function carList(): void
+    public function index(): void
     {
         $car = [
             '0' => [

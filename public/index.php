@@ -2,12 +2,17 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$route = $_SERVER['PATH_INFO'];
+use Plantae\Projeto\Controller\Helpers\RenderHtml;
+
+use Plantae\Projeto\Controller\Error;
+
+$route = $_SERVER['PATH_INFO'] ?? '/';
 
 $routes = require __DIR__ . '/../src/Routes/Web.php';
 
 if(!array_key_exists($route, $routes)){
-    http_response_code(404);
+    $error = new Error;
+    $error->index();
     exit();
 }
 

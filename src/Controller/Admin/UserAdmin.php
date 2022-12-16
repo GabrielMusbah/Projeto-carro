@@ -8,19 +8,33 @@ class UserAdmin
 {
     use RenderHtml;
 
-    public function loginAdmin(): void
+    public function index(): void
     {
+        $itens = [
+            ['name' => 'Jose'],
+            ['name' => 'Carlinhos'],
+            ['name' => 'Maia']
+        ];
+
         $this->renderHtml(
-            'Sale.tpl',
-            ['title' => $id, 'car' => $car]
+            'Admin/User.tpl',
+            ['title' => ' - Usuario', 'itens' => $itens]
         );
     }
 
-    public function Edit(): void
+    public function create(): void
     {
         $this->renderHtml(
-            'Admin/EditList.tpl',
-            ['title' => 'Admin', 'titleHeader' => ' - Carros', 'list' => $list]
+            'Admin/UserCreate.tpl',
+            ['title' => ' - Usuario']
+        );
+    }
+
+    public function edit(): void
+    {
+        $this->renderHtml(
+            'Admin/UserEdit.tpl',
+            ['title' => ' - Usuario']
         );
     }
 }

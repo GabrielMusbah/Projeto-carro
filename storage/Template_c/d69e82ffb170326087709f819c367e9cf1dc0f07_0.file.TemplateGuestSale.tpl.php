@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-15 15:49:32
+/* Smarty version 4.3.0, created on 2022-12-16 11:37:26
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestSale.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_639b7a4ca9a121_81238755',
+  'unifunc' => 'content_639c90b67f1070_00680921',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd69e82ffb170326087709f819c367e9cf1dc0f07' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestSale.tpl',
-      1 => 1671109203,
+      1 => 1671198769,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_639b7a4ca9a121_81238755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_639c90b67f1070_00680921 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -34,7 +34,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="icon" type="imagem/png" href="/./assets/guest/img/icon.png" />
+    <link rel="icon" type="imagem/png" href="./assets/common/img/icon.png"/>
     <title>Legendary Motor Sport - <?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>
 </head>
@@ -59,7 +59,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <main class="container bg-main border-main m-main">
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2144630252639b7a4ca99726_44046460', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1746444894639c90b67f0511_63284059', 'main');
 ?>
 
 
@@ -114,12 +114,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2144630252639b7a4c
 </body>
 </html><?php }
 /* {block 'main'} */
-class Block_2144630252639b7a4ca99726_44046460 extends Smarty_Internal_Block
+class Block_1746444894639c90b67f0511_63284059 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_2144630252639b7a4ca99726_44046460',
+    0 => 'Block_1746444894639c90b67f0511_63284059',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

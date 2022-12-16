@@ -13,10 +13,25 @@ use Plantae\Projeto\Controller\Admin\ {
 };
 
 return [
+    //rotas GET do Guest
     '/login' => [User::class, 'loginForm'],
     '/cadastro' => [User::class, 'cadastreForm'],
-    '/index' => [Car::class, 'carList'],
+    '/' => [Car::class, 'index'],
     '/compra' => [Car::class, 'carSale'],
 
-    '/admin' => [Admin::class, 'showIndex'],
+    //rotas GET do Admin index
+    '/admin' => [Admin::class, 'index'],
+    '/admin/carro' => [CarAdmin::class, 'index'],
+    '/admin/usuario' => [UserAdmin::class, 'index'],
+    '/admin/marca' => [MarkAdmin::class, 'index'],
+
+    //rotas GET do Admin Criação
+    '/admin/carro/cria' => [CarAdmin::class, 'create'],
+    '/admin/usuario/cria' => [UserAdmin::class, 'create'],
+    '/admin/marca/cria' => [MarkAdmin::class, 'create'],
+
+    //rotas GET do Admin Edição
+    '/admin/carro/edita' => [CarAdmin::class, 'edit'],
+    '/admin/usuario/edita' => [UserAdmin::class, 'edit'],
+    '/admin/marca/edita' => [MarkAdmin::class, 'edit'],
 ];

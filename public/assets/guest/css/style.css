@@ -64,7 +64,7 @@ header {
 
 @font-face {
     font-family: moneyGta;
-    src: url('font-gta.ttf')format('opentype');
+    src: url('/assets/guest/font/font-gta.ttf')format('opentype');
 }
 
 .text-money {

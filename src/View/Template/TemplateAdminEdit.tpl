@@ -8,12 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <title>Document</title>
+    <link rel="icon" type="imagem/png" href="/assets/common/img/icon.png" />
+    <title>Admin {$title|default: ''}</title>
 </head>
 <body>
+
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin">Admin</a>
+        </div>
+    </nav>
+
     <header class="container bg-secondary mb-3">
         <h1 class="text-center text-white p-5">
-            Sala de Administração{$titleHeader|default:''}
+            Sala de Administração{$title|default:''}
         </h1>
     </header>
 

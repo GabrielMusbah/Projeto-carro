@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-15 15:51:34
+/* Smarty version 4.3.0, created on 2022-12-16 09:57:08
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestLogin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_639b7ac6b372a3_24994694',
+  'unifunc' => 'content_639c79348f1155_07655793',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4b9e1fc7069e80b6935f184e3e470c143e3eb26' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestLogin.tpl',
-      1 => 1671108790,
+      1 => 1671198749,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_639b7ac6b372a3_24994694 (Smarty_Internal_Template $_smarty_tpl) {
+function content_639c79348f1155_07655793 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -34,7 +34,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="icon" type="imagem/png" href="./assets/guest/img/icon.png" />
+    <link rel="icon" type="imagem/png" href="./assets/common/img/icon.png" />
     <title>Legendary - <?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </title>
 </head>
@@ -47,7 +47,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
             <div class="col-lg-6 col-md-8 col-sm-12 p-5 border-login bg-login">
                 <form>
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_182949047639b7ac6b35a96_63496207', 'form');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_469981366639c79348efb43_24664723', 'form');
 ?>
 
                 </form>
@@ -66,12 +66,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_182949047639b7ac6b
 </body>
 </html><?php }
 /* {block 'form'} */
-class Block_182949047639b7ac6b35a96_63496207 extends Smarty_Internal_Block
+class Block_469981366639c79348efb43_24664723 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'form' => 
   array (
-    0 => 'Block_182949047639b7ac6b35a96_63496207',
+    0 => 'Block_469981366639c79348efb43_24664723',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

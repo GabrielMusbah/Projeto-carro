@@ -8,11 +8,33 @@ class CarAdmin
 {
     use RenderHtml;
 
-    public function Edit(): void
+    public function index(): void
+    {
+        $itens = [
+            ['name' => 'Uno'],
+            ['name' => 'Chevete'],
+            ['name' => 'HB 20']
+        ];
+
+        $this->renderHtml(
+            'Admin/Car.tpl',
+            ['title' => ' - Carro', 'itens' => $itens]
+        );
+    }
+
+    public function create(): void
     {
         $this->renderHtml(
-            'Admin/EditList.tpl',
-            ['title' => 'Admin', 'titleHeader' => ' - Carros', 'list' => $list]
+            'Admin/CarCreate.tpl',
+            ['title' => ' - Carro']
+        );
+    }
+
+    public function edit(): void
+    {
+        $this->renderHtml(
+            'Admin/CarEdit.tpl',
+            ['title' => ' - Carro']
         );
     }
 }
