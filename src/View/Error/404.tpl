@@ -11,6 +11,6 @@
         <p>
             Retorne para a pagina incial
         </p>
-        <a href="/index" class="btn btn-primary">Voltar</a>
+        <a href="/" class="btn btn-primary">Voltar</a>
     </div>
 {/block}

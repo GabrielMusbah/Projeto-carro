@@ -2,7 +2,7 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Controller\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Helpers\RenderHtml;
 
 class UserAdmin
 {
@@ -18,7 +18,7 @@ class UserAdmin
 
         $this->renderHtml(
             'Admin/User.tpl',
-            ['title' => ' - Usuario', 'itens' => $itens]
+            ['title' => 'Listar Usuarios', 'itens' => $itens]
         );
     }
 
@@ -26,7 +26,7 @@ class UserAdmin
     {
         $this->renderHtml(
             'Admin/UserCreate.tpl',
-            ['title' => ' - Usuario']
+            ['title' => 'Criar Usuario']
         );
     }
 
@@ -34,7 +34,7 @@ class UserAdmin
     {
         $this->renderHtml(
             'Admin/UserEdit.tpl',
-            ['title' => ' - Usuario']
+            ['title' => 'Editar Usuario']
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Helpers;
+namespace Plantae\Projeto\Core\Helpers;
 
 trait RenderHtml
 {

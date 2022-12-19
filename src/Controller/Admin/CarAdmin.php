@@ -2,7 +2,7 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Controller\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Helpers\RenderHtml;
 
 class CarAdmin
 {
@@ -18,7 +18,7 @@ class CarAdmin
 
         $this->renderHtml(
             'Admin/Car.tpl',
-            ['title' => ' - Carro', 'itens' => $itens]
+            ['title' => 'Listar Carros', 'itens' => $itens]
         );
     }
 
@@ -26,7 +26,7 @@ class CarAdmin
     {
         $this->renderHtml(
             'Admin/CarCreate.tpl',
-            ['title' => ' - Carro']
+            ['title' => 'Criar Carro']
         );
     }
 
@@ -34,7 +34,7 @@ class CarAdmin
     {
         $this->renderHtml(
             'Admin/CarEdit.tpl',
-            ['title' => ' - Carro']
+            ['title' => 'Editar Carro']
         );
     }
 }

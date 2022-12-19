@@ -3,7 +3,7 @@
 {block name = main}
     <main class="container p-0">
 
-        <a href="/admin/marca/cria" class="btn btn-primary mb-3 p-2">Criar {$title}</a>
+        <a href="/admin/marca/cria" class="btn btn-primary mb-3 p-2">Criar Novo</a>
         <ul class="list-group">
             {foreach $itens as $item}
                 <li class="list-group-item d-flex justify-content-between">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-19 14:14:03
-  from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/MarkEdit.tpl' */
+/* Smarty version 4.3.0, created on 2022-12-19 17:50:19
+  from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/BrandEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63a0a9eb49e331_83012221',
+  'unifunc' => 'content_63a0dc9b1979f3_56649287',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd5ff087385df94a383674a4ed4259798a3d07581' => 
+    '6ed41c500f2c346dca4fe752672dc7a1524b067c' => 
     array (
-      0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/MarkEdit.tpl',
-      1 => 1671473640,
+      0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/BrandEdit.tpl',
+      1 => 1671481635,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63a0a9eb49e331_83012221 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63a0dc9b1979f3_56649287 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_38728270563a0a9eb49bf38_57226207', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_90034612763a0dc9b195a92_25784968', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_38728270563a0a9eb49bf38_57226207 extends Smarty_Internal_Block
+class Block_90034612763a0dc9b195a92_25784968 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_38728270563a0a9eb49bf38_57226207',
+    0 => 'Block_90034612763a0dc9b195a92_25784968',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -52,7 +52,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                     <div class="">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Nome</span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                            <input type="text" class="form-control" placeholder="Username" name="name-brand" aria-label="Username" aria-describedby="basic-addon1" required>
                         </div>
                     </div>
                 

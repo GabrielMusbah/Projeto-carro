@@ -2,7 +2,7 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Controller\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Helpers\RenderHtml;
 
 class Admin
 {
@@ -12,7 +12,7 @@ class Admin
     {
         $this->renderHtml(
             'Admin/Index.tpl',
-            []
+            ['title' => 'Admin']
         );
     }
 }
