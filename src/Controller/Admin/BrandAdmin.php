@@ -43,7 +43,7 @@ class BrandAdmin
 
         $ext = pathinfo($name, PATHINFO_EXTENSION);
 
-        $dir = './assets/guest/img/uploads/Brand/';
+        $dir = './assets/guest/img/uploads/brand/';
 
         $new_name = $_POST['name-brand'] . '.' . $ext;
 

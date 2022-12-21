@@ -18,11 +18,11 @@
         <div class="row d-flex justify-content-center">
 
             <div class="col-lg-6 col-md-8 col-sm-12 p-5 border-login bg-login">
-                <form>
-                    {block name=form}
+                
+                {block name=form}
 
-                    {/block}
-                </form>
+                {/block}
+                
             </div>
 
         </div>

@@ -18,9 +18,13 @@ return [
     '/' => [Car::class, 'index'],
 
     //rotas GET do Guest
-    '/login' => [User::class, 'loginForm'],
-    '/cadastro' => [User::class, 'cadastreForm'],
+    '/login' => [User::class, 'loginIndex'],
+    '/cadastro' => [User::class, 'cadastreIndex'],
     '/compra' => [Car::class, 'carSale'],
+
+    //rotas POST do Guest
+    '/logar' => [User::class, 'login'],
+    '/cadastrar' => [User::class, 'create'],
 
 
     //rota GET do Admin index
