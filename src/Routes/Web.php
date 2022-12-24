@@ -30,6 +30,12 @@ return [
     //rota GET do Admin index
     '/admin' => [Admin::class, 'index'],
 
+    //rotas GET - POST do Admin login
+    '/admin/login' => [Admin::class, 'loginIndex'],
+    '/admin/logar' => [Admin::class, 'login'],
+    '/admin/deslogar' => [Admin::class, 'logout'],
+    '/admin/cadastrar' => [Admin::class, 'create'],
+
     //rotas GET do Admin Carro
     '/admin/carro' => [CarAdmin::class, 'index'],
     '/admin/carro/cria' => [CarAdmin::class, 'create'],
@@ -50,6 +56,7 @@ return [
 
 
     //rotas POST do Admin Carro
+    '/admin/carro/criar' => [CarAdmin::class, 'store'],
 
     //rotas POST do Admin Usuario
 

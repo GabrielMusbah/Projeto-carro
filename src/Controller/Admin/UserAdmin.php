@@ -2,6 +2,7 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
+use Plantae\Projeto\Controller\Guest\User;
 use Plantae\Projeto\Core\Helpers\RenderHtml;
 
 class UserAdmin
@@ -10,11 +11,9 @@ class UserAdmin
 
     public function index(): void
     {
-        $itens = [
-            ['name' => 'Jose'],
-            ['name' => 'Carlinhos'],
-            ['name' => 'Maia']
-        ];
+        $user = new User;
+
+        $itens = $user->index();
 
         $this->renderHtml(
             'Admin/User.tpl',

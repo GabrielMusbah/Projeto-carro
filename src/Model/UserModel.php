@@ -6,14 +6,10 @@ use Plantae\Projeto\Core\Model\Model;
 class UserModel extends Model
 {
     protected $fillable = [
-        'id',
-        'name',
+        'usuario_id',
+        'usuario_name',
         'email',
-        'password'
+        'password',
+        'adm',
     ];
-
-    public function senhaEstaCorreta(string $senhaPura): bool
-    {
-        return password_verify($senhaPura, $this->senha);
-    }
 }

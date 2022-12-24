@@ -14,61 +14,32 @@ class UserDao
         $this->connection = $connection;
     }
 
-    public function load()
+    public function load(): array
     {
-        $stmt = $this->connection->prepare("SELECT * FROM usuario");
-        $stmt->execute();
-        $codigos = $stmt->fetch();
-       
-        echo $codigos['id'];
+        $sqlQuery = 'SELECT * FROM usuario';
+
+        $stmt = $this->connection->query($sqlQuery);
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $users;
     }
 
-    public function loadByEmail(string $email): void
+    public function loadByEmail(string $email)
     {
-        // $sqlQuery = 'SELECT * FROM usuario WHERE email = :email ;';
-        // $stmt = $this->connection->prepare($sqlQuery);
 
-        // $stmt->execute([
-        //     ':email' => $email,
-        // ]);
+        $sqlQuery = 'SELECT * FROM usuario WHERE email = :email ;';
 
-        // // $user = $stmt->fetch();
+        $stmt = $this->connection->prepare($sqlQuery);
 
-        // $user = $this->hydrateUserList($stmt);
+        $stmt->execute([
+            ':email' => $email,
+        ]);
 
-        // echo $user['email'];s
-
-        // select a particular user by id
-        // $stmt = $this->connection->prepare("SELECT * FROM usuario ;");
-        
-        // $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // echo $user['id'];
-
-        // $stmt = $this->connection->prepare("SELECT * FROM usuario");
-        // $stmt->execute();
-        // $codigos = $stmt->fetch();
-       
-        // echo $codigos['id'];
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        return $users;
 
     }
-
-    // private function hydrateUserList(\PDOStatement $stmt): array
-    // {
-    //     $userDataList = $stmt->fetchAll();
-    //     $userList = [];
-
-    //     foreach ($userDataList as $userData) {
-    //         $userList[] = new UserModel(
-    //             $userData['id'],
-    //             $userData['name'],
-    //             $userData['email'],
-    //             $userData['password']
-    //         );
-    //     }
-
-    //     return $userList;
-    // }
 
     public function save(UserModel $user): bool
     {
@@ -82,14 +53,15 @@ class UserDao
 
     public function store(UserModel $user): bool
     {
-        $storeQuery = 'INSERT INTO usuario (name, email, password) VALUES (:name, :email, :password);';
+        $storeQuery = 'INSERT INTO usuario (usuario_name, email, password, adm) VALUES (:name, :email, :password, :adm);';
 
         $stmt = $this->connection->prepare($storeQuery);
 
         $success = $stmt->execute([
-            ':name' => $user->name,
+            ':name' => $user->usuario_name,
             ':email' => $user->email,
             ':password' =>$user->password,
+            ':adm' =>$user->adm,
         ]);
 
         // if ($success) {

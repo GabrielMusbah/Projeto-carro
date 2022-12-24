@@ -37,7 +37,7 @@
 
     </main>
 
-    <footer class="bg-preto border-top-red mt-3">
+    <footer class="bg-preto border-top-red mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 row d-flex justify-content-around p-3">

@@ -3,38 +3,38 @@
 {block name = main}
     <main class="container p-0">
 
-        <form action=''>
+        <form action='/admin/carro/criar' method="POST">
             <div class="form-group row">
 
                 <div class="col-4">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">Nome</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o nome" id="name" name="name" aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="col-4">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">Valor</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o preço" id="price" name="price"  aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
                 <div class="col-4">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Marca</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
-                        <option value="1">Ford</option>
-                        <option value="2">Dodge</option>
-                        <option value="3">BMW</option>
+                        <label class="input-group-text" for="marca_id">Marca</label>
+                        <select class="form-select" id="marca_id" name="marca_id" required>
+                        {foreach $marcas as $marca}
+                            <option value="{$marca.marca_id}">{$marca.name}</option>
+                        {/foreach}
                         </select>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Top Speed</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
+                        <label class="input-group-text" for="top_speed">Top Speed</label>
+                        <select class="form-select" id="top_speed" name="top_speed" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -46,8 +46,8 @@
 
                 <div class="col-3">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Acceleration</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
+                        <label class="input-group-text" for="acceleration">Acceleration</label>
+                        <select class="form-select" id="acceleration" name="acceleration" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -59,8 +59,8 @@
 
                 <div class="col-3">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Braking</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
+                        <label class="input-group-text" for="braking">Braking</label>
+                        <select class="form-select" id="braking" name="braking" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -72,8 +72,8 @@
 
                 <div class="col-3">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Traction</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
+                        <label class="input-group-text" for="traction">Traction</label>
+                        <select class="form-select" id="traction" name="traction" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -83,10 +83,10 @@
                     </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12">  
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required></textarea>
-                        <label for="floatingTextarea">Descricao</label>
+                        <textarea class="form-control" placeholder="Descreva o veiculo" id="description" name="description" required></textarea>
+                        <label for="description">Descricao</label>
                     </div>
                 </div>
 

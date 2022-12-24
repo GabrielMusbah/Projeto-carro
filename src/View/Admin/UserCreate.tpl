@@ -3,7 +3,7 @@
 {block name = main}
     <main class="container p-0">
 
-        <form action=''>
+        <form method="POST" action="/admin/cadastrar">
             <div class="form-group row">
 
                 <div class="col-6">
@@ -29,11 +29,11 @@
 
                 <div class="col-6">
                     <div class="input-group mb-0">
-                        <label class="input-group-text" for="inputGroupSelect01">Modo</label>
-                        <select class="form-select" id="inputGroupSelect01" required>
-                            <option value="1">Admin</option>
-                            <option value="2">Normal</option>
-                        </select>
+                        <label class="input-group-text" for="adm">Modo</label>
+                        <select class="form-select" name="adm" id="adm" required>
+                            <option value="true">Admin</option>
+                            <option value="false">Normal</option>
+                        </select> 
                     </div>
                 </div>
 

@@ -16,6 +16,7 @@
     <nav class="navbar navbar-dark bg-dark mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/admin">Admin</a>
+            <a class="navbar-brand" href="/admin/deslogar">Sair</a>
         </div>
     </nav>
 

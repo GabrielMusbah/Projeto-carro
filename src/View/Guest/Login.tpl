@@ -2,7 +2,7 @@
 
 {block name=form}
     <form method="POST" action="/logar">
-    <h2 class="text-white text-center">
+        <h2 class="text-white text-center">
             Login
         </h2>
 

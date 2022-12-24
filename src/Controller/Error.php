@@ -2,7 +2,7 @@
 
 namespace Plantae\Projeto\Controller;
 
-use Plantae\Projeto\Controller\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Helpers\RenderHtml;
 
 class Error
 {

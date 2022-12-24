@@ -24,9 +24,9 @@
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect01">Marca</label>
                         <select class="form-select" id="inputGroupSelect01" required>
-                        <option value="1">Ford</option>
-                        <option value="2">Dodge</option>
-                        <option value="3">BMW</option>
+                        {foreach $marcas as $marca}
+                            <option value="{$marca.marca_id}">{$marca.name}</option>
+                        {/foreach}
                         </select>
                     </div>
                 </div>

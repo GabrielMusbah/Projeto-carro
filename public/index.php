@@ -16,16 +16,24 @@ if(!array_key_exists($route, $routes)){
     exit();
 }
 
-/*
+
+
 session_start();
 
-$routesLogin = stripos($route, 'login'); //procura a palavra 'login' no $caminho, se nao tiver e false
+$listAll = ['/login', '/logar', '/cadastro', '/cadastrar', '/admin/login', '/admin/logar'];
 
-if(!isset($_SESSION['logged']) && $routesLogin === false){
+//Se a pessoa quem entrar em algo na parte Admin e não esta logado como adm, ele é mandado pro login adm
+if(strpos($route, 'admin') && !(strpos($route, 'login') || strpos($route, 'logar')) && !isset($_SESSION['adminLogged'])){
+    header('Location: /admin/login');
+    exit();
+}
+
+//se a pessoa tentar entrar em algum lugar e não esta logado ele é mandado pro /login
+if(!in_array($route, $listAll) && !isset($_SESSION['logged']) && !isset($_SESSION['adminLogged'])){
     header('Location: /login');
     exit();
 }
-*/
+
 
 [$classControll, $function] = $routes[$route];
 
