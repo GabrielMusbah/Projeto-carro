@@ -27,7 +27,7 @@
                             {* <a href="/admin/historico?id={$item.usuario_id}" class="btn btn-info btn-sm me-2">
                                 Compras
                             </a> *}
-                            <a href="/admin/usuario/edita?id={$item.usuario_id}" class="btn btn-warning btn-sm me-2">
+                            <a href="/admin/carro/edita?id={$item.carro_id}" class="btn btn-warning btn-sm me-2">
                                 Alterar
                             </a>
                             <a href="#" class='btn btn-danger btn-sm'>

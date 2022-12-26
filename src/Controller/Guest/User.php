@@ -60,9 +60,17 @@ class User
         //$userModel = new UserModel(['passowrd' => $userBy['password']]);
 
         if(password_verify($senha, $userBy['password'])){
-            $_SESSION['logged'] = true;
+
             $_SESSION['user'] = $userBy['usuario_id'];
-            header('Location: /');
+
+            if($userBy['adm'] === true){
+                $_SESSION['adminLogged'] = true;
+                header('Location: /admin');
+            } else {
+                $_SESSION['logged'] = true;
+                header('Location: /');
+            }
+            
         } else {
             header('Location: /login');
         }

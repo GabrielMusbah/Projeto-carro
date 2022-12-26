@@ -2,7 +2,11 @@
 
 namespace Plantae\Projeto\Controller\Guest;
 
+use Plantae\Projeto\Config\DataBase;
 use Plantae\Projeto\Core\Helpers\RenderHtml;
+use Plantae\Projeto\Dao\CarDao;
+
+use function PHPSTORM_META\map;
 
 class Car
 {
@@ -10,54 +14,17 @@ class Car
 
     public function index(): void
     {
-        $car = [
-            '0' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '1'
-            ],
-            '1' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '2'
-            ],
-            '2' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '3'
-            ],
-            '3' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '4'
-            ],
-            '4' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '5'
-            ],
-            '5' => [
-                'name' =>'COMET SAFARI', 
-                'price' => 710000, 
-                'seat' => '2', 
-                'img' => 'comet',
-                'id' => '6'
-            ]
-        ];
+        $connection = DataBase::createConnection();  
+
+        $car = new CarDao($connection);
+
+        $cars = $car->load();
+
+        // dd($cars);
 
         $this->renderHtml(
             'Guest/Index.tpl',
-            ['title' => 'Index', 'cars' => $car]
+            ['title' => 'Index', 'cars' => $cars]
             
         );
     }

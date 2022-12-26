@@ -10,59 +10,76 @@ use Plantae\Projeto\Controller\Admin\ {
     CarAdmin,
     BrandAdmin,
     UserAdmin,
-    Historic
+    Historic,
+    Login
 };
 
 return [
-    //rota GET do Guest index
+    //Rotas GET -> Index
+
+
+    //Index do Guest
     '/' => [Car::class, 'index'],
 
-    //rotas GET do Guest
+    //Index do Admin
+    '/admin' => [Admin::class, 'index'],
+
+
+    //Rotas do Guest
+
+
+    //Rotas GET
     '/login' => [User::class, 'loginIndex'],
     '/cadastro' => [User::class, 'cadastreIndex'],
     '/compra' => [Car::class, 'carSale'],
 
-    //rotas POST do Guest
+    //Rotas POST
     '/logar' => [User::class, 'login'],
     '/cadastrar' => [User::class, 'create'],
 
 
-    //rota GET do Admin index
-    '/admin' => [Admin::class, 'index'],
+    //Rotas do Admin
 
-    //rotas GET - POST do Admin login
-    '/admin/login' => [Admin::class, 'loginIndex'],
-    '/admin/logar' => [Admin::class, 'login'],
-    '/admin/deslogar' => [Admin::class, 'logout'],
-    '/admin/cadastrar' => [Admin::class, 'create'],
 
-    //rotas GET do Admin Carro
-    '/admin/carro' => [CarAdmin::class, 'index'],
-    '/admin/carro/cria' => [CarAdmin::class, 'create'],
-    '/admin/carro/edita' => [CarAdmin::class, 'edit'],
+    //Rotas GET -> Login
+    '/admin/login' => [Login::class, 'index'],
 
-    //rotas GET do Admin Usuario
+    //Rotas POST -> Login
+    '/admin/logar' => [Login::class, 'login'],
+    '/admin/deslogar' => [Login::class, 'logout'],
+
+
+    //Rotas GET -> Usuario
     '/admin/usuario' => [UserAdmin::class, 'index'],
     '/admin/usuario/cria' => [UserAdmin::class, 'create'],
     '/admin/usuario/edita' => [UserAdmin::class, 'edit'],
 
-    //rotas GET do Admin Marca
+    //Rotas POST -> Usuario
+    '/admin/cadastrar' => [UserAdmin::class, 'store'],
+    '/admin/usuario/editar' => [UserAdmin::class, 'update'],
+
+
+    //Rotas GET -> Carro
+    '/admin/carro' => [CarAdmin::class, 'index'],
+    '/admin/carro/cria' => [CarAdmin::class, 'create'],
+    '/admin/carro/edita' => [CarAdmin::class, 'edit'],
+
+    //Rotas POST -> Carro
+    '/admin/carro/criar' => [CarAdmin::class, 'store'],
+    '/admin/carro/editar' => [CarAdmin::class, 'update'],
+
+
+    //Rotas GET -> Marca
     '/admin/marca' => [BrandAdmin::class, 'index'],
     '/admin/marca/cria' => [BrandAdmin::class, 'create'],
     '/admin/marca/edita' => [BrandAdmin::class, 'edit'],
 
-    //rotas GET do Admin Compra
-    '/admin/historico' => [Historic::class, 'index'],
-
-
-    //rotas POST do Admin Carro
-    '/admin/carro/criar' => [CarAdmin::class, 'store'],
-
-    //rotas POST do Admin Usuario
-
-    //rotas POST do Admin Marca
+    //Rotas POST -> Marca
     '/admin/marca/criar' => [BrandAdmin::class, 'store'],
     '/admin/marca/editar' => [BrandAdmin::class, 'update'],
 
+
+    //rotas GET do Admin Compra
+    '/admin/historico' => [Historic::class, 'index'],
 
 ];

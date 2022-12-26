@@ -9,16 +9,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="icon" type="imagem/png" href="/assets/common/img/icon.png" />
-    <title>Admin {$title|default: ''}</title>
+    <title>Admin {$titleNav|default: ''}</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark mb-4">
+    {if $logged == true}
+        <nav class="navbar navbar-dark bg-dark mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/admin">Admin</a>
             <a class="navbar-brand" href="/admin/deslogar">Sair</a>
         </div>
-    </nav>
+        </nav>
+    {/if}
 
     <header class="container bg-secondary mb-3">
         <h1 class="text-center text-white p-5">

@@ -9,7 +9,7 @@
                 <div class="col-6">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Nome</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="name" id="name" required>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="usuario_name" id="usuario_name" required>
                     </div>
                 </div>
                 

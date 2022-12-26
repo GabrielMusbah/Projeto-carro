@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-23 10:35:03
+/* Smarty version 4.3.0, created on 2022-12-26 16:24:56
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/Car.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63a5bc97d8b480_53592117',
+  'unifunc' => 'content_63aa0318375c70_50939921',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50c4b2dc37c76127932716bd080af55481f1ded5' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/Car.tpl',
-      1 => 1671806102,
+      1 => 1672077138,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63a5bc97d8b480_53592117 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63aa0318375c70_50939921 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_184265699963a5bc97d87ea9_49335107', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_175075182663aa0318372e31_07409519', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_184265699963a5bc97d87ea9_49335107 extends Smarty_Internal_Block
+class Block_175075182663aa0318372e31_07409519 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_184265699963a5bc97d87ea9_49335107',
+    0 => 'Block_175075182663aa0318372e31_07409519',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -74,7 +74,7 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
 </td>
                     <td class="d-flex justify-content-end">
                         <span class="">
-                                                        <a href="/admin/usuario/edita?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['usuario_id'];?>
+                                                        <a href="/admin/carro/edita?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['carro_id'];?>
 " class="btn btn-warning btn-sm me-2">
                                 Alterar
                             </a>

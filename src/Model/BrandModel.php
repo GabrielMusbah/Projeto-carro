@@ -11,7 +11,7 @@ class BrandModel extends Model
     protected $fillable = [
         'marca_id',
         'marca_name',
-        'src'
+        'marca_src'
     ];
 
 

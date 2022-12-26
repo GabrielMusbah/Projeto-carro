@@ -5,6 +5,8 @@ use Plantae\Projeto\Core\Model\Model;
 
 class CarModel extends Model
 {
+    const PATH = './assets/guest/img/uploads/car/';
+
     protected $fillable = [
         'carro_id',
         'carro_name',
@@ -14,6 +16,8 @@ class CarModel extends Model
         'acceleration',
         'braking',
         'traction',
-        'description'
+        'description',
+        'carro_src',
+        'seat'
     ];
 }

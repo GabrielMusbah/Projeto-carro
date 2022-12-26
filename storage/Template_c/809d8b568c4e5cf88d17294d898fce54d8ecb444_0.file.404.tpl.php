@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-16 11:39:03
+/* Smarty version 4.3.0, created on 2022-12-26 08:51:32
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Error/404.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_639c9117f3dd87_62283571',
+  'unifunc' => 'content_63a998d48bca42_50935379',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '809d8b568c4e5cf88d17294d898fce54d8ecb444' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Error/404.tpl',
-      1 => 1671205140,
+      1 => 1671475519,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_639c9117f3dd87_62283571 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63a998d48bca42_50935379 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_375365914639c9117f3bc06_06237991', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17681381163a998d48ba2a9_19386932', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateError.tpl");
 }
 /* {block 'main'} */
-class Block_375365914639c9117f3bc06_06237991 extends Smarty_Internal_Block
+class Block_17681381163a998d48ba2a9_19386932 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_375365914639c9117f3bc06_06237991',
+    0 => 'Block_17681381163a998d48ba2a9_19386932',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -52,7 +52,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         <p>
             Retorne para a pagina incial
         </p>
-        <a href="/index" class="btn btn-primary">Voltar</a>
+        <a href="/" class="btn btn-primary">Voltar</a>
     </div>
 <?php
 }

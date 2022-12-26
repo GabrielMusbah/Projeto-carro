@@ -11,13 +11,15 @@
                     <div class="">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Nome</span>
-                            <input type="text" class="form-control" placeholder="Username" name="name" id="name" aria-label="Username" aria-describedby="basic-addon1" required>
+                            <input type="text" class="form-control" placeholder="Username" name="marca_name" id="marca_name" aria-label="Username" aria-describedby="basic-addon1" required>
                         </div>
                     </div>
                 
-                    <div class="">
-                        <div class="form-group">
-                        <input type="file" id="file" class="form-control-file" name="pic" accept="image/*" class="form-control" required>
+                    <div class="mt-3  d-flex">
+                        <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
+                            <label for="pic">Imagem da marca:</label>
+                            <input type="file" id="pic" class="ms-2 form-control-file" name="pic" accept="image/*" class="form-control" required>
+                        </div>
                     </div>
                 </div>
             </div>

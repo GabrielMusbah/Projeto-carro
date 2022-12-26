@@ -24,51 +24,63 @@ class CarDao
         return $cars;
     }
 
+    public function loadById($id): array
+    {
+        $sqlQuery = 'SELECT * FROM carro WHERE carro_id = :id';
+
+        $stmt = $this->connection->prepare($sqlQuery);
+
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+
+        $car = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $car;
+    }
+
     public function store(CarModel $car): bool
     {
-        $storeQuery = 'INSERT INTO carro (carro_name, price, marca_id, top_speed, acceleration, braking, traction, description) VALUES (:name, :price, :marca_id, :top_speed, :acceleration, :braking, :traction, :description);';
+        $storeQuery = 'INSERT INTO carro (carro_name, price, marca_id, top_speed, acceleration, braking, traction, description, carro_src, seat) VALUES (:carro_name, :price, :marca_id, :top_speed, :acceleration, :braking, :traction, :description, :src, :seat);';
 
         $stmt = $this->connection->prepare($storeQuery);
 
         $success = $stmt->execute([
-            ':carro' => $car->carro_name, 
+            ':carro_name' => $car->carro_name, 
             ':price' => $car->price, 
             ':marca_id' => $car->marca_id, 
             ':top_speed' => $car->top_speed, 
             ':acceleration' => $car->acceleration, 
             ':braking' => $car->braking, 
             ':traction' => $car->traction, 
-            ':description' => $car->description
+            ':description' => $car->description,
+            ':src' => $car->carro_src,
+            ':seat' => $car->seat
         ]);
 
         return $success;
     }
 
-    // public function load(): array
-    // {
-    //     $sqlQuery = 'SELECT * FROM marca';
+    public function update(CarModel $car)
+    {
+        $updateQuery = 'UPDATE carro SET carro_name = :carro_name, price = :price, marca_id = :marca_id, top_speed = :top_speed, acceleration = :acceleration, braking = :braking, traction = :traction, description = :description, carro_src = :carro_src, seat = :seat WHERE carro_id = :id; ';
 
-    //     $stmt = $this->connection->query($sqlQuery);
-    //     $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    //     return $brands;
-    // }
+        $stmt = $this->connection->prepare($updateQuery);
 
-    // public function store(BrandModel $brand): bool
-    // {
-        // $storeQuery = 'INSERT INTO marca (name, src) VALUES (:name, :src);';
+        $success = $stmt->execute([
+            ':id' => $car->carro_id,
+            ':carro_name' => $car->carro_name, 
+            ':price' => $car->price, 
+            ':marca_id' => $car->marca_id, 
+            ':top_speed' => $car->top_speed, 
+            ':acceleration' => $car->acceleration, 
+            ':braking' => $car->braking, 
+            ':traction' => $car->traction, 
+            ':description' => $car->description,
+            ':carro_src' => $car->carro_src,
+            ':seat' => $car->seat
+        ]);
 
-        // $stmt = $this->connection->prepare($storeQuery);
-
-        // $success = $stmt->execute([
-        //     ':name' => $brand->name,
-        //     ':src' => $brand->src,
-        // ]);
-
-        // // if ($success) {
-        // //     $brand->defineId($this->connection->lastInsertId());
-        // // }
-
-        // return $success;
-    // }
+        return $success;
+    }
 }
