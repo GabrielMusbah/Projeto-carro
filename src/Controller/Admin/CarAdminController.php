@@ -2,35 +2,39 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Config\DataBase;
-use Plantae\Projeto\Core\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Controller\Controller;
 use Plantae\Projeto\Dao\BrandDao;
 use Plantae\Projeto\Dao\CarDao;
 use Plantae\Projeto\Model\CarModel;
 
-class CarAdmin
+class CarAdminController extends Controller
 {
-    use RenderHtml;
 
     public function index(): void
-    {
-        $connection = DataBase::createConnection();  
-
-        $car = new CarDao($connection);
+    {  
+        $car = new CarDao();
 
         $cars = $car->load();
 
+        if(isset($_SESSION['msg'])){
+            $list = ['title' => 'Listar Carros', 'itens' => $cars, 'titleNav' => '- Carros', 'logged' => true, 'msg' => ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']]];
+        } else {
+            $list = ['title' => 'Listar Carros', 'itens' => $cars, 'titleNav' => '- Carros', 'logged' => true];
+        }
+
         $this->renderHtml(
             'Admin/Car.tpl',
-            ['title' => 'Listar Carros', 'itens' => $cars, 'titleNav' => '- Carros', 'logged' => true]
+            $list
         );
+
+        unset($_SESSION['msg']);
+        unset($_SESSION['color']);
+        unset($_SESSION['text']);
     }
 
     public function create(): void
-    {
-        $connection = DataBase::createConnection();  
-
-        $brand = new BrandDao($connection);
+    {  
+        $brand = new BrandDao();
 
         $brands = $brand->load();
 
@@ -61,13 +65,15 @@ class CarAdmin
 
         move_uploaded_file($_FILES['picCar']['tmp_name'], $dir.$new_name);
 
-        $connection = DataBase::createConnection();
-
         $carInfo = new CarModel($_POST + ['carro_src' => $new_name]);
 
-        $car = new CarDao($connection);
+        $car = new CarDao();
 
         $car->store($carInfo);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'success';
+        $_SESSION['text'] = 'Carro criado com sucesso!';
 
         header('Location: /admin/carro');
     }
@@ -80,14 +86,12 @@ class CarAdmin
             'id',
             FILTER_VALIDATE_INT
         );
-
-        $connection = DataBase::createConnection();  
-
-        $car = new CarDao($connection);
+  
+        $car = new CarDao();
 
         $carBy = $car->loadById($id);
 
-        $brand = new BrandDao($connection);
+        $brand = new BrandDao();
 
         $brands = $brand->load();
 
@@ -104,16 +108,37 @@ class CarAdmin
             'id',
             FILTER_VALIDATE_INT
         );
-
-        $connection = DataBase::createConnection();  
-
-        $car = new CarDao($connection);
+  
+        $car = new CarDao();
 
         $carInfo = new CarModel($_POST + ['carro_id' => $carro_id]);
 
         // dd($carInfo);
 
         $car->update($carInfo);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'secondary';
+        $_SESSION['text'] = 'Carro editado com sucesso!';
+
+        header('Location: /admin/carro');
+    }
+
+    public function delete(): void
+    {
+        $carro_id = filter_input(
+            INPUT_GET,
+            'id',
+            FILTER_VALIDATE_INT
+        );
+  
+        $car = new CarDao();
+
+        $car->delete($carro_id);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'danger';
+        $_SESSION['text'] = 'Carro deletada com sucesso!';
 
         header('Location: /admin/carro');
     }

@@ -2,11 +2,10 @@
 
 namespace Plantae\Projeto\Controller;
 
-use Plantae\Projeto\Core\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Controller\Controller;
 
-class Error
+class Error  extends Controller
 {
-    use RenderHtml;
 
     public function index(): void
     {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-21 15:01:37
+/* Smarty version 4.3.0, created on 2022-12-27 16:09:59
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestSale.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63a3581115f654_80767255',
+  'unifunc' => 'content_63ab5117468c77_29629665',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd69e82ffb170326087709f819c367e9cf1dc0f07' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Template/TemplateGuestSale.tpl',
-      1 => 1671649295,
+      1 => 1672171796,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63a3581115f654_80767255 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63ab5117468c77_29629665 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -59,7 +59,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <main class="container bg-main border-main m-main">
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193876802763a3581115ea14_87931526', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_154878517063ab5117466b27_14431276', 'main');
 ?>
 
 
@@ -83,25 +83,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193876802763a35811
             </div>
         </div>
     </footer>
-
-
-
-
-    <div class="modal fade" id="msg_buy_make" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body bg-border-modal-buy-make  row p-4">
-                    <h3 class="text-center mb-3 text-white col-12">Obrigado pela compra.</h3>
-                    <p class="text-white col-12 mb-3" style="text-align: justify;">O veiculo comprado vai ser enviado para sua garagem nos proximos minutos, faça um bom uso da sua nova propriedade, qualquer duvida sera um prazer te ajudar</p>
-                    <p class="text-white col-8 mb-0 d-flex align-self-center" >Cell: 999 8734 2345</p>
-                    <button type="button" data-bs-dismiss="modal" class="button-red-white py-2 col-4">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
+ 
     <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"><?php echo '</script'; ?>
 >
@@ -111,12 +93,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193876802763a35811
 </body>
 </html><?php }
 /* {block 'main'} */
-class Block_193876802763a3581115ea14_87931526 extends Smarty_Internal_Block
+class Block_154878517063ab5117466b27_14431276 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_193876802763a3581115ea14_87931526',
+    0 => 'Block_154878517063ab5117466b27_14431276',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

@@ -3,7 +3,7 @@
 {block name = main}
     <main class="container p-0">
 
-        <form method="POST" action="/admin/cadastrar">
+        <form method="POST" action="/admin/usuario/cadastrar">
             <div class="form-group row">
 
                 <div class="col-6">

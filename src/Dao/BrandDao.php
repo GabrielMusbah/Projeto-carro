@@ -3,16 +3,11 @@
 namespace Plantae\Projeto\Dao;
 
 use PDO;
+use Plantae\Projeto\Core\Dao\Dao;
 use Plantae\Projeto\Model\BrandModel;
 
-class BrandDao
+class BrandDao extends Dao
 {
-    private PDO $connection;
-
-    public function __construct(PDO $connection)
-    {
-        $this->connection = $connection;
-    }
 
     public function load(): array
     {
@@ -67,6 +62,20 @@ class BrandDao
         $success = $stmt->execute([
             ':name' => $brand->marca_name,
             ':id' => $brand->marca_id,
+        ]);
+
+        return $success;
+    }
+
+    public function delete($marca_id)
+    {
+        $updateQuery = 'UPDATE marca SET marca_trash = :trash WHERE marca_id = :id; ';
+
+        $stmt = $this->connection->prepare($updateQuery);
+
+        $success = $stmt->execute([
+            ':trash' => true,
+            ':id' => $marca_id,
         ]);
 
         return $success;

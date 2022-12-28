@@ -2,13 +2,11 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Config\DataBase;
-use Plantae\Projeto\Core\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Controller\Controller;
 use Plantae\Projeto\Dao\UserDao;
 
-class Login
+class LoginAdminController extends Controller
 {
-    use RenderHtml;
 
     public function index(): void
     {
@@ -32,9 +30,7 @@ class Login
             FILTER_DEFAULT
         );
 
-        $connection = DataBase::createConnection();
-
-        $user = new UserDao($connection);
+        $user = new UserDao();
         
 
         $userBy = $user->loadByEmail($email);

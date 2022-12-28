@@ -2,14 +2,10 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Config\DataBase;
-use Plantae\Projeto\Core\Helpers\RenderHtml;
-use Plantae\Projeto\Dao\UserDao;
-use Plantae\Projeto\Model\UserModel;
+use Plantae\Projeto\Core\Controller\Controller;
 
-class Admin
+class AdminController extends Controller
 {
-    use RenderHtml;
 
     public function index(): void
     {

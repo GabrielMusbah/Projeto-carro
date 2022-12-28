@@ -2,30 +2,33 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Config\DataBase;
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Helpers\RenderHtml;
 use Plantae\Projeto\Dao\BrandDao;
 use Plantae\Projeto\Model\BrandModel;
 
-class BrandAdmin// extends Controller
+class BrandAdminController extends Controller
 {
-    use RenderHtml;
-
-    protected $connection;
 
     public function index(): void
     {
-        $connection = DataBase::createConnection();  
-
-        $brand = new BrandDao($connection);
+        $brand = new BrandDao();
 
         $brands = $brand->load();
 
+        if(isset($_SESSION['msg'])){
+            $list = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true, 'msg' => ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']]];
+        } else {
+            $list = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true];
+        }
+
         $this->renderHtml(
             'Admin/Brand.tpl',
-            ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true]
+            $list
         );
+
+        unset($_SESSION['msg']);
+        unset($_SESSION['color']);
+        unset($_SESSION['text']);
     }
 
     public function create(): void
@@ -53,15 +56,17 @@ class BrandAdmin// extends Controller
 
         $new_name = $_POST['marca_name'] . '.' . $ext;
 
-        move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name);
-
-        $connection = DataBase::createConnection();  
+        move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name);  
 
         $userInfo = new BrandModel($_POST + ['marca_src' => $new_name]);
 
-        $brand = new BrandDao($connection);
+        $brand = new BrandDao();
 
         $brand->store($userInfo);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'success';
+        $_SESSION['text'] = 'Marca criada com sucesso!';
 
         header('Location: /admin/marca');
 
@@ -73,11 +78,9 @@ class BrandAdmin// extends Controller
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
-        );
+        );  
 
-        $connection = DataBase::createConnection();  
-
-        $brand = new BrandDao($connection);
+        $brand = new BrandDao();
 
         $brandBy = $brand->loadById($id);
 
@@ -99,15 +102,38 @@ class BrandAdmin// extends Controller
             INPUT_POST,
             'marca_name',
             FILTER_DEFAULT
-        );
+        );  
 
-        $connection = DataBase::createConnection();  
-
-        $brand = new BrandDao($connection);
+        $brand = new BrandDao();
 
         $brandInfo = new BrandModel(['marca_id' => $marca_id, 'marca_name' => $marca_name]);
 
         $brand->update($brandInfo);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'secondary';
+        $_SESSION['text'] = 'Marca editada com sucesso!';
+
+        header('Location: /admin/marca');
         
+    }
+
+    public function delete(): void
+    {
+        $marca_id = filter_input(
+            INPUT_GET,
+            'id',
+            FILTER_VALIDATE_INT
+        );  
+
+        $brand = new BrandDao();
+
+        $brand->delete($marca_id);
+
+        $_SESSION['msg'] = true;
+        $_SESSION['color'] = 'danger';
+        $_SESSION['text'] = 'Marca deletada com sucesso!';
+
+        header('Location: /admin/marca');
     }
 }

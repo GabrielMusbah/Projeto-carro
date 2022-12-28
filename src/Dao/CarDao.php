@@ -3,16 +3,11 @@
 namespace Plantae\Projeto\Dao;
 
 use PDO;
+use Plantae\Projeto\Core\Dao\Dao;
 use Plantae\Projeto\Model\CarModel;
 
-class CarDao
+class CarDao extends Dao
 {
-    private PDO $connection;
-
-    public function __construct(PDO $connection)
-    {
-        $this->connection = $connection;
-    }
 
     public function load()//: array
     {
@@ -26,7 +21,7 @@ class CarDao
 
     public function loadById($id): array
     {
-        $sqlQuery = 'SELECT * FROM carro WHERE carro_id = :id';
+        $sqlQuery = 'SELECT * FROM carro left join marca USING(marca_id) WHERE carro_id = :id';
 
         $stmt = $this->connection->prepare($sqlQuery);
 
@@ -35,6 +30,21 @@ class CarDao
         ]);
 
         $car = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $car;
+    }
+
+    public function loadByName($name): array
+    {
+        $sqlQuery = 'SELECT carro_id FROM carro WHERE carro_name = :name';
+
+        $stmt = $this->connection->prepare($sqlQuery);
+
+        $stmt->execute([
+            ':name' => $name,
+        ]);
+
+        $car = $stmt->fetch(PDO::FETCH_ASSOC);
     
         return $car;
     }
@@ -79,6 +89,20 @@ class CarDao
             ':description' => $car->description,
             ':carro_src' => $car->carro_src,
             ':seat' => $car->seat
+        ]);
+
+        return $success;
+    }
+
+    public function delete($carro_id)
+    {
+        $updateQuery = 'UPDATE carro SET carro_trash = :trash WHERE carro_id = :id; ';
+
+        $stmt = $this->connection->prepare($updateQuery);
+
+        $success = $stmt->execute([
+            ':trash' => true,
+            ':id' => $carro_id,
         ]);
 
         return $success;

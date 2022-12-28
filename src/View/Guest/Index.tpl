@@ -34,7 +34,9 @@
                             </p>
                         </div>
                     </div>
-                    <img src="./assets/guest/img/uploads/car/{$car.carro_src}" class="card-img-top px-1" alt="">
+                    <div class="card-body">
+                        <img src="./assets/guest/img/uploads/car/{$car.carro_src}" class="card-img-top img-fluid px-1" style="heigth: 350px;" alt="">
+                    </div>
                     <div class="card-body text-white">
                         <div class="row px-1">
                             <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 d-flex align-self-center">

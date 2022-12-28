@@ -2,16 +2,9 @@
 
 namespace Plantae\Projeto\Core\Controller;
 
-use Plantae\Projeto\Config\DataBase;
-use Plantae\Projeto\Core\Contracts\CrudInterface;
-use PDO;
+use Plantae\Projeto\Core\Helpers\RenderHtml;
 
-class Controller //implements CrudInterface
+class Controller
 {
-    // protected $connection = '';
-
-    // public function __construct()
-    // {
-    //     $this->connection = DataBase::createConnection();
-    // }
+    use RenderHtml;
 }

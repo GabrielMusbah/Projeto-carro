@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-26 11:28:16
+/* Smarty version 4.3.0, created on 2022-12-27 14:11:18
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63a9bd906ec9a8_53653458',
+  'unifunc' => 'content_63ab3546de66a7_26585012',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8e41c01433b8e7ba900715c894e58019ee9f23d' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Index.tpl',
-      1 => 1672068492,
+      1 => 1672164676,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63a9bd906ec9a8_53653458 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63ab3546de66a7_26585012 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_97687226163a9bd906e85d8_27232454', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_31994122463ab3546de1c34_96875580', 'main');
 ?>
 
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateGuestSale.tpl");
 }
 /* {block 'main'} */
-class Block_97687226163a9bd906e85d8_27232454 extends Smarty_Internal_Block
+class Block_31994122463ab3546de1c34_96875580 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_97687226163a9bd906e85d8_27232454',
+    0 => 'Block_31994122463ab3546de1c34_96875580',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -87,8 +87,10 @@ $_smarty_tpl->tpl_vars['car']->do_else = false;
                             </p>
                         </div>
                     </div>
-                    <img src="./assets/guest/img/uploads/car/<?php echo $_smarty_tpl->tpl_vars['car']->value['carro_src'];?>
-" class="card-img-top px-1" alt="">
+                    <div class="card-body">
+                        <img src="./assets/guest/img/uploads/car/<?php echo $_smarty_tpl->tpl_vars['car']->value['carro_src'];?>
+" class="card-img-top img-fluid px-1" style="heigth: 350px;" alt="">
+                    </div>
                     <div class="card-body text-white">
                         <div class="row px-1">
                             <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 d-flex align-self-center">

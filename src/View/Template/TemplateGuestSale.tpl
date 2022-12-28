@@ -55,25 +55,7 @@
             </div>
         </div>
     </footer>
-
-
-
-
-    <div class="modal fade" id="msg_buy_make" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body bg-border-modal-buy-make  row p-4">
-                    <h3 class="text-center mb-3 text-white col-12">Obrigado pela compra.</h3>
-                    <p class="text-white col-12 mb-3" style="text-align: justify;">O veiculo comprado vai ser enviado para sua garagem nos proximos minutos, faça um bom uso da sua nova propriedade, qualquer duvida sera um prazer te ajudar</p>
-                    <p class="text-white col-8 mb-0 d-flex align-self-center" >Cell: 999 8734 2345</p>
-                    <button type="button" data-bs-dismiss="modal" class="button-red-white py-2 col-4">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
+ 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>

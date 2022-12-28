@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-26 15:20:39
+/* Smarty version 4.3.0, created on 2022-12-27 08:29:13
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/UserCreate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63a9f407aae1b4_42910700',
+  'unifunc' => 'content_63aae519aa13a4_87502197',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ff2f8e63e0e56d19e69d01872771bac49ba4247' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/UserCreate.tpl',
-      1 => 1672082284,
+      1 => 1672144145,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63a9f407aae1b4_42910700 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63aae519aa13a4_87502197 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21771522563a9f407aac580_07402772', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_206160691563aae519aa06c5_91648938', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_21771522563a9f407aac580_07402772 extends Smarty_Internal_Block
+class Block_206160691563aae519aa06c5_91648938 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_21771522563a9f407aac580_07402772',
+    0 => 'Block_206160691563aae519aa06c5_91648938',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -44,7 +44,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
     <main class="container p-0">
 
-        <form method="POST" action="/admin/cadastrar">
+        <form method="POST" action="/admin/usuario/cadastrar">
             <div class="form-group row">
 
                 <div class="col-6">

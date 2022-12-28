@@ -28,9 +28,11 @@
         </h1>
     </header>
 
-    <div class="container alert alert-success">
-        Deu certo fiote
-    </div>
+    {if isset($msg.msg)}
+        <div class="container alert alert-{$msg.color}">
+            {$msg.text}
+        </div>
+    {/if}
 
     {block name = main}
     

@@ -1,17 +1,19 @@
 <?php
 
 use Plantae\Projeto\Controller\Guest\ {
-    User,
-    Car
+    UserController,
+    CarController,
+    LoginController
 };
 
 use Plantae\Projeto\Controller\Admin\ {
-    Admin,
-    CarAdmin,
-    BrandAdmin,
-    UserAdmin,
-    Historic,
-    Login
+    AdminController,
+    CarAdminController,
+    BrandAdminController,
+    UserAdminController,
+    BuyController,
+    LoginAdminController,
+    RecordController
 };
 
 return [
@@ -19,67 +21,79 @@ return [
 
 
     //Index do Guest
-    '/' => [Car::class, 'index'],
+    '/' => [CarController::class, 'index'],
 
     //Index do Admin
-    '/admin' => [Admin::class, 'index'],
+    '/admin' => [AdminController::class, 'index'],
 
 
     //Rotas do Guest
 
 
     //Rotas GET
-    '/login' => [User::class, 'loginIndex'],
-    '/cadastro' => [User::class, 'cadastreIndex'],
-    '/compra' => [Car::class, 'carSale'],
+    '/login' => [LoginController::class, 'index'],
+    '/cadastro' => [UserController::class, 'create'],
+    '/compra' => [CarController::class, 'create'],
 
     //Rotas POST
-    '/logar' => [User::class, 'login'],
-    '/cadastrar' => [User::class, 'create'],
+    '/logar' => [LoginController::class, 'login'],
+    '/cadastrar' => [UserController::class, 'store'],
+    '/comprar' => [CarController::class, 'store'],
 
 
     //Rotas do Admin
 
 
     //Rotas GET -> Login
-    '/admin/login' => [Login::class, 'index'],
+    '/admin/login' => [LoginAdminController::class, 'index'],
 
     //Rotas POST -> Login
-    '/admin/logar' => [Login::class, 'login'],
-    '/admin/deslogar' => [Login::class, 'logout'],
+    '/admin/logar' => [LoginAdminController::class, 'login'],
+    '/admin/deslogar' => [LoginAdminController::class, 'logout'],
 
 
     //Rotas GET -> Usuario
-    '/admin/usuario' => [UserAdmin::class, 'index'],
-    '/admin/usuario/cria' => [UserAdmin::class, 'create'],
-    '/admin/usuario/edita' => [UserAdmin::class, 'edit'],
+    '/admin/usuario' => [UserAdminController::class, 'index'],
+    '/admin/usuario/cria' => [UserAdminController::class, 'create'],
+    '/admin/usuario/edita' => [UserAdminController::class, 'edit'],
 
     //Rotas POST -> Usuario
-    '/admin/cadastrar' => [UserAdmin::class, 'store'],
-    '/admin/usuario/editar' => [UserAdmin::class, 'update'],
+    '/admin/usuario/cadastrar' => [UserAdminController::class, 'store'],
+    '/admin/usuario/editar' => [UserAdminController::class, 'update'],
+    '/admin/usuario/deletar' => [UserAdminController::class, 'delete'],
 
 
     //Rotas GET -> Carro
-    '/admin/carro' => [CarAdmin::class, 'index'],
-    '/admin/carro/cria' => [CarAdmin::class, 'create'],
-    '/admin/carro/edita' => [CarAdmin::class, 'edit'],
+    '/admin/carro' => [CarAdminController::class, 'index'],
+    '/admin/carro/cria' => [CarAdminController::class, 'create'],
+    '/admin/carro/edita' => [CarAdminController::class, 'edit'],
 
     //Rotas POST -> Carro
-    '/admin/carro/criar' => [CarAdmin::class, 'store'],
-    '/admin/carro/editar' => [CarAdmin::class, 'update'],
+    '/admin/carro/criar' => [CarAdminController::class, 'store'],
+    '/admin/carro/editar' => [CarAdminController::class, 'update'],
+    '/admin/carro/deletar' => [CarAdminController::class, 'delete'],
 
 
     //Rotas GET -> Marca
-    '/admin/marca' => [BrandAdmin::class, 'index'],
-    '/admin/marca/cria' => [BrandAdmin::class, 'create'],
-    '/admin/marca/edita' => [BrandAdmin::class, 'edit'],
+    '/admin/marca' => [BrandAdminController::class, 'index'],
+    '/admin/marca/cria' => [BrandAdminController::class, 'create'],
+    '/admin/marca/edita' => [BrandAdminController::class, 'edit'],
 
     //Rotas POST -> Marca
-    '/admin/marca/criar' => [BrandAdmin::class, 'store'],
-    '/admin/marca/editar' => [BrandAdmin::class, 'update'],
+    '/admin/marca/criar' => [BrandAdminController::class, 'store'],
+    '/admin/marca/editar' => [BrandAdminController::class, 'update'],
+    '/admin/marca/deletar' => [BrandAdminController::class, 'delete'],
 
 
     //rotas GET do Admin Compra
-    '/admin/historico' => [Historic::class, 'index'],
+    '/admin/compra' => [BuyController::class, 'index'],
+    '/admin/compra/edita' => [BuyController::class, 'edit'],
+
+    //rota POST do Admin Compra
+    '/admin/compra/editar' => [BuyController::class, 'update'],
+
+    //Rota GET do Admin Relatorio
+    '/admin/relatorio' => [RecordController::class, 'index'],
+    '/admin/relatorio/filtrado' => [RecordController::class, 'indexFilter'],
 
 ];
