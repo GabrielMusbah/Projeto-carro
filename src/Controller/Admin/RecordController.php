@@ -13,7 +13,7 @@ class RecordController extends Controller
     {
         $user = new UserDao();
 
-        $users = $user->load();
+        $users = $user->load('usuario', ['usuario_id', 'usuario_name']);
 
         $car = new CarDao();
 
@@ -30,14 +30,25 @@ class RecordController extends Controller
         
         $buy = new BuyDao();
 
-        $buys = $buy->loadBy($_POST['carro_id'], $_POST['usuario_id']);
+        $where = [];
 
-        dd($buys);
+        $list = ['carro_id', 'usuario_id', 'price_start', 'price_end'];
 
+        foreach($list as $key){
 
-        // $this->renderHtml(
-        //     'Admin/RecordFilter.tpl',
-        //     ['title' => 'Filtro do relatorio', 'itens' => $users, 'titleNav' => '- Carros', 'logged' => true, 'carros' => $cars]
-        // );
+            if(!empty($_POST[$key])){
+                $where[$key] = $_POST[$key];
+            }
+
+        }
+
+        
+        $buys = $buy->loadBy($where);
+        
+        // dd(empty([]), $buys);
+        $this->renderHtml(
+            'Admin/RecordFilter.tpl',
+            ['title' => 'Filtro do relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true]
+        );
     }
 }

@@ -1,7 +1,7 @@
 {extends file="Template/TemplateAdminEdit.tpl"}
 
 {block name = main}
-    <main class="container p-0">
+    <div class="container">
 
         <form action='/admin/marca/editar?id={$marca.marca_id}' method="POST" enctype="multipart/form-data">
             <div class="form-group row d-flex justify-content-center">
@@ -15,9 +15,14 @@
                         </div>
                     </div>
                 
-                    {* <div class="">
-                        <input type="file" id="file" class="form-control-file" name="pic" accept=".png" class="form-control" required>
-                    </div> *}
+
+                    <div class="mt-3  d-flex">
+                        <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
+                            <label for="picCar">Imagem do carro:</label>
+                            <input type="file" id="file" class="ms-2 form-control-file" name="picBrand" accept="image/*" class="form-control">
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -29,6 +34,6 @@
 
         </form>
 
-    </main>
+    </div>
 
 {/block}

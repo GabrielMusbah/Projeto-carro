@@ -34,36 +34,59 @@ class BuyDao extends Dao
         return $buy;
     }
 
-    public function loadBy($idCar, $idUser): array
+    public function loadBy(array $where): array
     {
-        $sqlQuery = 'SELECT * FROM compra left join carro USING(carro_id) left join usuario USING(usuario_id) WHERE carro_id = :idCar AND usuario_id = :idUser';
+
+        $sqlWhere = [];
+
+        $execute = [];
+
+        $listId = ['carro_id', 'usuario_id'];
+
+        foreach($where as $key => $value){
+
+            if(in_array($key, $listId)){
+                array_push($sqlWhere, "{$key} = :{$key}");
+            }
+
+            $execute[":{$key}"] = $value;
+
+        };
+
+        
+
+        if(array_key_exists('price_start', $where) && array_key_exists('price_end', $where)){
+
+            array_push($sqlWhere, "compra_price BETWEEN :price_start AND :price_end");
+
+        } elseif (array_key_exists('price_start', $where)){
+
+            array_push($sqlWhere, "compra_price > :price_start");
+
+        } elseif (array_key_exists('price_end', $where)){
+
+            array_push($sqlWhere, "compra_price < :price_end");
+
+        }
+
+        
+
+        if(isset($where)){
+            $sqlWhere = implode(" AND ",$sqlWhere);
+
+            $sqlWhere = ' WHERE ' . $sqlWhere;
+        }
+        
+        $sqlQuery = 'SELECT * FROM compra left join carro USING(carro_id) left join usuario USING(usuario_id)' . $sqlWhere . ';';
 
         $stmt = $this->connection->prepare($sqlQuery);
 
-        $stmt->execute([
-            ':idCar' => $idCar,
-            ':idUser' => $idUser,
-        ]);
+        $stmt->execute($execute);
 
         $buy = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         return $buy;
     }
-
-    // public function loadRecord($id): array
-    // {
-    //     $sqlQuery = 'SELECT * FROM compra left join carro USING(carro_id) left join usuario USING(usuario_id) WHERE usuario_id = :id';
-
-    //     $stmt = $this->connection->prepare($sqlQuery);
-
-    //     $stmt->execute([
-    //         ':id' => $id,
-    //     ]);
-
-    //     $buy = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    //     return $buy;
-    // }
 
     public function store(BuyModel $buy): bool
     {

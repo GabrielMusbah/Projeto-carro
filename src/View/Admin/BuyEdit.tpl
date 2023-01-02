@@ -1,7 +1,7 @@
 {extends file="Template/TemplateAdminEdit.tpl"}
 
 {block name = main}
-    <main class="container p-0">
+    <div class="container">
 
         <form method="POST" action="/admin/compra/editar?id={$compra.compra_id}">
             <div class="form-group row">
@@ -53,6 +53,6 @@
 
         </form>
 
-    </main>
+    </div>
 
 {/block}

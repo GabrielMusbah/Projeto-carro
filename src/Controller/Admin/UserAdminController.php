@@ -42,12 +42,11 @@ class UserAdminController extends Controller
 
     public function store(): void
     {
-       
-        $userInfo = new UserModel($_POST);
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
         $user = new UserDao();
 
-        $user->store($userInfo);
+        $user->store(new UserModel($_POST));
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'success';
@@ -68,7 +67,7 @@ class UserAdminController extends Controller
   
         $user = new UserDao();
 
-        $userBy = $user->loadById($id);
+        $userBy = $user->load('usuario', ['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $id]);
 
         $this->renderHtml(
             'Admin/UserEdit.tpl',
@@ -83,12 +82,12 @@ class UserAdminController extends Controller
             'id',
             FILTER_VALIDATE_INT
         );
-  
+
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
+
         $user = new UserDao();
 
-        $userInfo = new UserModel($_POST + ['usuario_id' => $usuario_id]);
-
-        $user->update($userInfo);
+        $user->update(new UserModel($_POST), ['usuario_id' => $usuario_id]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

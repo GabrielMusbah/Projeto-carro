@@ -1,7 +1,7 @@
 {extends file="Template/TemplateAdminEdit.tpl"}
 
 {block name = main}
-    <main class="container p-0">
+    <div class="container">
 
         <form action='/admin/marca/criar' method="POST" enctype="multipart/form-data">
             <div class="form-group row d-flex justify-content-center">
@@ -32,6 +32,6 @@
 
         </form>
 
-    </main>
+    </div>
 
 {/block}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-26 17:40:55
+/* Smarty version 4.3.0, created on 2022-12-30 18:01:40
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/CarEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63aa14e7962553_65641960',
+  'unifunc' => 'content_63af5fc42d6231_31179051',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8edc054cbcb2d4cdec414e3340706a4aeaf0b099' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/CarEdit.tpl',
-      1 => 1672090854,
+      1 => 1672437698,
       2 => 'file',
     ),
   ),
@@ -20,51 +20,51 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63aa14e7962553_65641960 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63af5fc42d6231_31179051 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_115599392363aa14e793c199_73600931', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19350957563af5fc42c5b27_96722785', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_115599392363aa14e793c199_73600931 extends Smarty_Internal_Block
+class Block_19350957563af5fc42c5b27_96722785 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_115599392363aa14e793c199_73600931',
+    0 => 'Block_19350957563af5fc42c5b27_96722785',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-    <main class="container p-0">
+    <div class="container">
 
         <form action='/admin/carro/editar?id=<?php echo $_smarty_tpl->tpl_vars['carro']->value['carro_id'];?>
 ' method="POST" enctype="multipart/form-data">
             <div class="form-group row">
 
-                <div class="col-3">
-                    <div class="input-group">
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Nome</span>
                         <input type="text" class="form-control" placeholder="Digite o nome" value="<?php echo $_smarty_tpl->tpl_vars['carro']->value['carro_name'];?>
 " id="carro_name" name="carro_name" aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
-                <div class="col-3">
-                    <div class="input-group">
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Valor</span>
                         <input type="text" class="form-control" placeholder="Digite o preço" value="<?php echo $_smarty_tpl->tpl_vars['carro']->value['price'];?>
 " id="price" name="price"  aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="marca_id">Marca</label>
                         <select class="form-select" id="marca_id" name="marca_id" required>
@@ -84,15 +84,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <div class="col-3">
-                    <div class="input-group">
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Lugares</span>
                         <input type="text" class="form-control" placeholder="Digite o preço" value="<?php echo $_smarty_tpl->tpl_vars['carro']->value['seat'];?>
 " id="seat" name="seat"  aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="top_speed">Top Speed</label>
                         <select class="form-select" id="top_speed" name="top_speed" required>
@@ -105,7 +105,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="acceleration">Acceleration</label>
                         <select class="form-select" id="acceleration" name="acceleration" required>
@@ -118,7 +118,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="braking">Braking</label>
                         <select class="form-select" id="braking" name="braking" required>
@@ -131,7 +131,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="traction">Traction</label>
                         <select class="form-select" id="traction" name="traction" required>
@@ -152,9 +152,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
 
-            </div>
+                <div class="col-md-6 col-12 mt-3  d-flex">
+                    <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
+                        <label for="picCar">Imagem do carro:</label>
+                        <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control" required>
+                    </div>
+                </div>
 
-                        
+            </div>
+            
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary mt-3">
                     Salvar
@@ -165,7 +171,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
 
-    </main>
+    </div>
 
 <?php
 }

@@ -5,6 +5,8 @@ use Plantae\Projeto\Core\Model\Model;
 
 class BuyModel extends Model
 {
+    public $tableName = 'compra';
+    
     protected $fillable = [
         'compra_id',
         'carro_id',
@@ -12,4 +14,5 @@ class BuyModel extends Model
         'compra_price',
         'color'
     ];
+
 }

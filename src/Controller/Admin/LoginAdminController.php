@@ -31,9 +31,8 @@ class LoginAdminController extends Controller
         );
 
         $user = new UserDao();
-        
 
-        $userBy = $user->loadByEmail($email);
+        $userBy = $user->load('usuario', ['password', 'adm'], ['email' => $email])[0];
 
         if(password_verify($senha, $userBy['password']) && $userBy['adm'] === true){
             $_SESSION['adminLogged'] = true;

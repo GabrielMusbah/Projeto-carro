@@ -34,9 +34,13 @@
         </div>
     {/if}
 
-    {block name = main}
-    
-    {/block}
+    <main class="">
+
+        {block name = main}
+        
+        {/block}
+
+    </main>
 
 
     <script src="./../../assets/admin/js/main.js"></script>

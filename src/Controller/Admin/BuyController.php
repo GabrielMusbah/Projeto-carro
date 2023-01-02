@@ -13,10 +13,9 @@ class BuyController extends Controller
 
     public function index(): void
     { 
-
         $buy = new BuyDao();
 
-        $buys = $buy->load();
+        $buys = $buy->load('compra', ['']);
 
         $this->renderHtml(
             'Admin/Buy.tpl',
@@ -60,11 +59,9 @@ class BuyController extends Controller
 
         $carro_id = implode('', $car->loadByName($_POST['carro_name']));
 
-        $usuario_id = implode('', $user->loadByName($_POST['usuario_name']));
+        $usuario_id = $user->load('usuario', ['usuario_id'] , ['usuario_name' => $_POST['usuario_name']])[0]['usuario_id'];
 
-        $buyInfo = new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $usuario_id, 'compra_id' => $compra_id]);
-
-        $buy->update($buyInfo);
+        $buy->update(new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $usuario_id, 'compra_id' => $compra_id]));
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

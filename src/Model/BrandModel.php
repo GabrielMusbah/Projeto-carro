@@ -5,6 +5,7 @@ use Plantae\Projeto\Core\Model\Model;
 
 class BrandModel extends Model
 {
+    public $tableName = 'marca';
 
     const PATH = './assets/guest/img/uploads/brand/'; 
 

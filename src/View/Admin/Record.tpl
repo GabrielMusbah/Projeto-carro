@@ -13,6 +13,7 @@
                         {foreach $carros as $carro}
                             <option {* {if $carro.marca_id == $marca.marca_id} selected {/if} *} value="{$carro.carro_id}">{$carro.carro_name}</option>
                         {/foreach}
+                            <option value="">Todos</option>
                         </select>
                     </div>
                 </div>
@@ -24,6 +25,7 @@
                         {foreach $usuarios as $usuario}
                             <option {*{if $carro.marca_id == $marca.marca_id} selected {/if}*} value="{$usuario.usuario_id}">{$usuario.usuario_name}</option>
                         {/foreach}
+                            <option value="">Todos</option>
                         </select>
                     </div>
                 </div>
@@ -33,14 +35,14 @@
                 <div class="col-6">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">Incial</span>
-                        <input type="text" class="form-control" placeholder="Digite o preço incial" id="price_start" name="price_start"  aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o preço incial" id="price_start" name="price_start"  aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
 
                 <div class="col-6">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">Final</span>
-                        <input type="text" class="form-control" placeholder="Digite o preço final" id="price_end" name="price_end"  aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o preço final" id="price_end" name="price_end"  aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
 

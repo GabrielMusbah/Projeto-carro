@@ -3,6 +3,7 @@
 namespace Plantae\Projeto\Controller\Guest;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Dao\Orm;
 use Plantae\Projeto\Dao\BuyDao;
 use Plantae\Projeto\Dao\CarDao;
 use Plantae\Projeto\Model\BuyModel;
@@ -13,16 +14,73 @@ class CarController extends Controller
 
     public function index(): void
     {
+        $imgs = ['IconFerrari', 'IconLamborghini', 'IconMazda', 'IconBmw', 'IconMercedes', 'IconMaserati', 'IconJeep', 'IconVolvo', 'IconToyota'];
+
+        $list = ['title' => 'Index', 'imgs' => $imgs];
+
         $car = new CarDao();
 
-        $cars = $car->load();
 
-        // dd($cars);
+        $listFIlter = [
+            1 => [
+                'order' => 'price',
+                'filter' => 'ASC'
+            ], 
+            2 => [
+                'order' => 'price',
+                'filter' => 'DESC'
+            ],
+            3 => [
+                'order' => 'carro_name',
+                'filter' => 'ASC',
+            ],
+            4 => [
+                'order' => 'carro_name',
+                'filter' => 'DESC',
+            ],
+            5 => [
+                'order' => 'seat',
+                'filter' => 'ASC',
+            ],
+            6 => [
+                'order' => 'seat',
+                'filter' => 'DESC',
+            ],
+            7 => [
+                'order' => 'marca_name',
+                'filter' => 'ASC',
+            ],
+            8 => [
+                'order' => 'marca_name',
+                'filter' => 'DESC',
+            ]
+        ];
+
+
+        if(isset($_GET['filter'])){
+
+            foreach($listFIlter as $key => $value){
+                if($_GET['filter'] == $key){
+    
+                    $list['cars'] = $car->loadOrder($value['order'], $value['filter']);
+                    $list['filter'] = $key;
+
+                }
+            }
+        }
+
+        if(!array_key_exists('filter', $list)){
+
+            $list['cars'] = $car->load();
+
+            $list['filter'] = 1;
+
+        }
+
 
         $this->renderHtml(
             'Guest/Index.tpl',
-            ['title' => 'Index', 'cars' => $cars]
-            
+            $list
         );
     }
 

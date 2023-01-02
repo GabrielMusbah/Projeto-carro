@@ -9,10 +9,19 @@ use Plantae\Projeto\Model\CarModel;
 class CarDao extends Dao
 {
 
-    public function load()//: array
+    public function load(): array
     {
         $sqlQuery = 'SELECT * FROM carro left join marca USING(marca_id);';
 
+        $stmt = $this->connection->query($sqlQuery);
+        $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $cars;
+    }
+
+    public function loadOrder(string $order, string $filter): array
+    {
+        $sqlQuery = "SELECT * FROM carro left join marca USING(marca_id) ORDER BY {$order} {$filter}";
         $stmt = $this->connection->query($sqlQuery);
         $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
     

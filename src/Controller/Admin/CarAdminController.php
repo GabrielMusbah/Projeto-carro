@@ -36,7 +36,7 @@ class CarAdminController extends Controller
     {  
         $brand = new BrandDao();
 
-        $brands = $brand->load();
+        $brands = $brand->load('marca', ['marca_id', 'marca_trash', 'marca_name']);
 
         $this->renderHtml(
             'Admin/CarCreate.tpl',
@@ -93,7 +93,7 @@ class CarAdminController extends Controller
 
         $brand = new BrandDao();
 
-        $brands = $brand->load();
+        $brands = $brand->load('marca', ['marca_id', 'marca_trash', 'marca_name']);
 
         $this->renderHtml(
             'Admin/CarEdit.tpl',
@@ -107,15 +107,44 @@ class CarAdminController extends Controller
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
-        );
-  
-        $car = new CarDao();
+        );    
 
-        $carInfo = new CarModel($_POST + ['carro_id' => $carro_id]);
+        if($_FILES['picCar']['size'] !== 0){
 
-        // dd($carInfo);
+            if($_FILES['picCar']['size'] > 2200000)
+                return;
 
-        $car->update($carInfo);
+            $car = new CarDao();
+
+            $carSrc = $car->loadById($carro_id)[0]['carro_src'];    
+
+            $dir = CarModel::PATH;
+
+            unlink($dir.$carSrc);
+
+            $name = $_FILES['picCar']['name'];
+
+            $ext = pathinfo($name, PATHINFO_EXTENSION);
+
+            $new_name = $_POST['carro_name'] . '.' . $ext;
+
+            move_uploaded_file($_FILES['picCar']['tmp_name'], $dir.$new_name);
+
+            $carInfo = new CarModel($_POST + ['carro_src' => $new_name, 'carro_id' => $carro_id]);
+
+            $car->update($carInfo);
+
+        } else {
+
+            $car = new CarDao();
+
+            $carSrc = $car->loadById($carro_id)[0]['carro_src'];
+
+            $carInfo = new CarModel($_POST + ['carro_id' => $carro_id, 'carro_src' => $carSrc]);
+
+            $car->update($carInfo);
+            
+        }
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

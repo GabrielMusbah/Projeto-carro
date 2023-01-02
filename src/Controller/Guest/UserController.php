@@ -5,19 +5,18 @@ namespace Plantae\Projeto\Controller\Guest;
 use Plantae\Projeto\Core\Helpers\RenderHtml;
 use Plantae\Projeto\Dao\UserDao;
 use Plantae\Projeto\Config\DataBase;
+use Plantae\Projeto\Core\Controller\Controller;
 use Plantae\Projeto\Model\UserModel;
 
-class UserController
+class UserController extends Controller
 {
     use RenderHtml;
 
     public function index()
     {
-        $connection = DataBase::createConnection();  
+        $user = new UserDao();
 
-        $user = new UserDao($connection);
-
-        $users = $user->load();
+        $users = $user->load('usuario', ['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm']);
 
         return $users;
     }
@@ -32,13 +31,11 @@ class UserController
 
     public function store(): void
     {
-        $connection = DataBase::createConnection(); 
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $userInfo = new UserModel($_POST);
+        $user = new UserDao();
 
-        $user = new UserDao($connection);
-
-        $user->store($userInfo);
+        $user->store(new UserModel($_POST));
 
         header('Location: /');
     }

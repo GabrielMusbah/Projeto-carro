@@ -6,6 +6,8 @@ use JsonSerializable;
 
 class Model implements JsonSerializable
 {
+    public $tableName = '';
+    
     protected $fillable = [];
     
     protected $attributes = [];
@@ -36,6 +38,11 @@ class Model implements JsonSerializable
     }
 
     public function jsonSerialize() {
+        return $this->attributes;
+    }
+
+    public function load()
+    {
         return $this->attributes;
     }
 
