@@ -12,6 +12,20 @@ trait Orm
         $sqlColuns = implode(', ', $coluns);
 
         //Gera um array com as condições de Where
+        if(array_key_exists('price_start', $where) && array_key_exists('price_end', $where)){
+
+            array_push($sqlWhere, "compra_price BETWEEN :price_start AND :price_end");
+
+        } elseif (array_key_exists('price_start', $where)){
+
+            array_push($sqlWhere, "compra_price > :price_start");
+
+        } elseif (array_key_exists('price_end', $where)){
+
+            array_push($sqlWhere, "compra_price < :price_end");
+
+        }
+        
         $sqlWhere = $this->where($where);
         
         //Gera um array com os valores a serem usados pelo execute
@@ -70,6 +84,29 @@ trait Orm
         $buys = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         return $buys;
+    }
+
+    public function loadOrder(array $coluns, array $join, string $order, string $filter): array
+    {
+        //Gera uma string das colunas que devem ser puxadas do BD
+        $sqlColuns = implode(', ', $coluns);
+
+        $sqlJoin = [];
+
+        foreach($join as $key => $value){
+
+            array_push($sqlJoin, "left join {$value} USING ({$value}_id)");
+            
+        };
+
+        $sqlJoin = implode(" ",$sqlJoin);
+
+        $sqlQuery = "SELECT {$sqlColuns} FROM {$this->tableName} {$sqlJoin} ORDER BY {$order} {$filter}";
+
+        $stmt = $this->connection->query($sqlQuery);
+        $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $cars;
     }
 
     public function store(): void

@@ -50,26 +50,4 @@ class Model implements JsonSerializable
         return $this->attributes;
     }
 
-    //ORM
-
-    // public function load($coluns, $where = [])
-    // {
-    //     return $this->loadOrm($this->tableName, $coluns, $where);
-    // }
-
-    // public function store()
-    // {
-    //     $this->storeOrm($this->attributes, $this->tableName);
-    // }
-
-    // public function update($where = [])
-    // {
-    //     $this->updateOrm($this->attributes, $this->tableName, $where);
-    // }
-
-    // public function delete($id)
-    // {
-    //     $this->deleteOrm($this->tableName, $id);
-    // }
-
 }
