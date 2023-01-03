@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-30 18:01:40
+/* Smarty version 4.3.0, created on 2023-01-03 17:03:21
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/CarEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63af5fc42d6231_31179051',
+  'unifunc' => 'content_63b49819ee33b6_84599596',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8edc054cbcb2d4cdec414e3340706a4aeaf0b099' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/CarEdit.tpl',
-      1 => 1672437698,
+      1 => 1672779800,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63af5fc42d6231_31179051 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63b49819ee33b6_84599596 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19350957563af5fc42c5b27_96722785', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_188238093263b49819ed7e39_67422928', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_19350957563af5fc42c5b27_96722785 extends Smarty_Internal_Block
+class Block_188238093263b49819ed7e39_67422928 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_19350957563af5fc42c5b27_96722785',
+    0 => 'Block_188238093263b49819ed7e39_67422928',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -155,7 +155,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <div class="col-md-6 col-12 mt-3  d-flex">
                     <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
                         <label for="picCar">Imagem do carro:</label>
-                        <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control" required>
+                        <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control">
                     </div>
                 </div>
 

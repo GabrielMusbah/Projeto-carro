@@ -3,7 +3,7 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Dao\UserDao;
+use Plantae\Projeto\Model\UserModel;
 
 class LoginAdminController extends Controller
 {
@@ -30,9 +30,9 @@ class LoginAdminController extends Controller
             FILTER_DEFAULT
         );
 
-        $user = new UserDao();
+        $user = new UserModel();
 
-        $userBy = $user->load('usuario', ['password', 'adm'], ['email' => $email])[0];
+        $userBy = $user->load(['password', 'adm'], ['email' => $email])[0];
 
         if(password_verify($senha, $userBy['password']) && $userBy['adm'] === true){
             $_SESSION['adminLogged'] = true;

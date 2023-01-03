@@ -2,8 +2,8 @@
 
 namespace Plantae\Projeto\Controller\Guest;
 
-use Plantae\Projeto\Dao\UserDao;
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Model\UserModel;
 
 class LoginController extends Controller
 {
@@ -30,9 +30,9 @@ class LoginController extends Controller
             FILTER_DEFAULT
         );
 
-        $user = new UserDao();
+        $user = new UserModel();
 
-        $userBy = $user->loadByEmail($email);
+        $userBy = $user->load(['password', 'adm'], ['email' => $email])[0];
 
         if(password_verify($senha, $userBy['password'])){
 

@@ -106,7 +106,7 @@ class UserAdminController extends Controller
             FILTER_VALIDATE_INT
         );
   
-        $user = new UserDao();
+        $user = new UserModel();
 
         $user->delete($usuario_id);
         

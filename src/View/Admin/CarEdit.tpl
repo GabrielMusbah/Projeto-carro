@@ -100,7 +100,7 @@
                 <div class="col-md-6 col-12 mt-3  d-flex">
                     <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
                         <label for="picCar">Imagem do carro:</label>
-                        <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control" required>
+                        <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control">
                     </div>
                 </div>
 
