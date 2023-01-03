@@ -3,19 +3,18 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Dao\BuyDao;
-use Plantae\Projeto\Dao\CarDao;
-use Plantae\Projeto\Dao\UserDao;
 use Plantae\Projeto\Model\BuyModel;
+use Plantae\Projeto\Model\CarModel;
+use Plantae\Projeto\Model\UserModel;
 
 class BuyController extends Controller
 {
 
     public function index(): void
     { 
-        $buy = new BuyDao();
+        $buy = new BuyModel();
 
-        $buys = $buy->load('compra', ['']);
+        $buys = $buy->loadJoin(['compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'usuario']);
 
         $this->renderHtml(
             'Admin/Buy.tpl',
@@ -32,36 +31,37 @@ class BuyController extends Controller
         );
  
 
-        $buy = new BuyDao();
+        $buy = new BuyModel();
 
-        $buyBy = $buy->loadById($id);
+        $buyBy = $buy->loadJoin(['compra_id', 'usuario_name', 'usuario_id', 'carro_name', 'color', 'compra_price', 'carro_id'], ['carro', 'usuario'], ['compra_id' => $id]);
+
+        $car = new CarModel();
+
+        $cars = $car->load(['carro_name', 'carro_id']);
+
+        $user = new UserModel();
+
+        $users = $user->load(['usuario_name', 'usuario_id']);
 
         $this->renderHtml(
             'Admin/BuyEdit.tpl',
-            ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0]]
+            ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0], 'carros' => $cars, 'usuarios' => $users]
         );
     }
 
-    public function update(): void
+    public function update(): void //PAREI AKIIIIIIIIIIIIIIIII PAE
     {
         $compra_id = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
         );
- 
 
-        $buy = new BuyDao();
+        
+        $buy = new BuyModel($_POST);
 
-        $car = new CarDao();
+        $buy->update(['compra_id' => $compra_id]);
 
-        $user = new UserDao();
-
-        $carro_id = implode('', $car->loadByName($_POST['carro_name']));
-
-        $usuario_id = $user->load('usuario', ['usuario_id'] , ['usuario_name' => $_POST['usuario_name']])[0]['usuario_id'];
-
-        $buy->update(new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $usuario_id, 'compra_id' => $compra_id]));
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

@@ -11,9 +11,9 @@ class BrandAdminController extends Controller
 
     public function index(): void
     {
-        $brand = new BrandDao();
+        $brand = new BrandModel();
 
-        $brands = $brand->load('marca', ['marca_id', 'marca_trash', 'marca_name']);
+        $brands = $brand->load(['marca_id', 'marca_trash', 'marca_name']);
 
         $list = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true];
 
@@ -58,9 +58,9 @@ class BrandAdminController extends Controller
 
         move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name);  
 
-        $brand = new BrandDao();
+        $brand = new BrandModel($_POST + ['marca_src' => $new_name]);
 
-        $brand->store(new BrandModel($_POST + ['marca_src' => $new_name]));
+        $brand->store();
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'success';
@@ -78,9 +78,9 @@ class BrandAdminController extends Controller
             FILTER_VALIDATE_INT
         );  
 
-        $brand = new BrandDao();
+        $brand = new BrandModel();
 
-        $brandBy = $brand->load('marca', ['marca_id', 'marca_trash', 'marca_name'], ['marca_id' => $id]);
+        $brandBy = $brand->load(['marca_id', 'marca_trash', 'marca_name'], ['marca_id' => $id]);
 
         $this->renderHtml(
             'Admin/BrandEdit.tpl',
@@ -113,11 +113,9 @@ class BrandAdminController extends Controller
             if($_FILES['picBrand']['size'] > 2200000)
                 return;
 
-            $brand = new BrandDao();
+            $brand = new BrandModel();
 
-            $brandSrc = $brand->load('marca', ['marca_src'], ['marca_id' => $marca_id])[0]['marca_src'];    
-
-            dd($brandSrc);
+            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marca_id])[0]['marca_src'];    
 
             $dir = BrandModel::PATH;
 
@@ -131,15 +129,19 @@ class BrandAdminController extends Controller
 
             move_uploaded_file($_FILES['picBrand']['tmp_name'], $dir.$new_name);
 
-            $brand->update(new BrandModel($_POST + ['marca_src' => $new_name, 'carro_id' => $carro_id, 'marca_id' => $marca_id]), ['marca_id' => $marca_id]);
+            $brandM = new BrandModel($_POST + ['marca_src' => $new_name, 'carro_id' => $carro_id, 'marca_id' => $marca_id]);
+
+            $brandM->update(['marca_id' => $marca_id]);
 
         } else {
 
-            $brand = new BrandDao();
+            $brand = new BrandModel();
 
-            $brandSrc = $brand->load('marca', ['marca_src'], ['marca_id' => $marca_id])[0]['marca_src']; 
+            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marca_id])[0]['marca_src'];   
 
-            $brand->update(new BrandModel($_POST + ['marca_id' => $marca_id, 'marca_src' => $brandSrc]), ['marca_id' => $marca_id]);
+            $brandM = new BrandModel($_POST + ['marca_id' => $marca_id, 'marca_src' => $brandSrc]);
+
+            $brandM->update(['marca_id' => $marca_id]);
             
         }
 
@@ -159,9 +161,9 @@ class BrandAdminController extends Controller
             FILTER_VALIDATE_INT
         );  
 
-        $brand = new BrandDao();
+        $brand = new BrandModel();
 
-        $brand->delete('marca', $marca_id);
+        $brand->delete($marca_id);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'danger';

@@ -18,8 +18,7 @@ class BrandModel extends Model
 
     public function getFile()
     {
-        
-        return self::PATH . $this->src;
+        return self::PATH . $this->marca_src;
     }
 
 }

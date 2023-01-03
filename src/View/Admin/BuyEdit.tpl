@@ -8,15 +8,23 @@
 
                 <div class="col-6">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Comprador</span>
-                        <input type="text" class="form-control" placeholder="Comprador" aria-label="Username" aria-describedby="basic-addon1" value="{$compra.usuario_name}" name="usuario_name" id="usuario_name" required>
+                        <label class="input-group-text" for="usuario_id">Comprado</label>
+                        <select class="form-select" name="usuario_id" id="usuario_id" required>
+                            {foreach $usuarios as $usuario}
+                                <option {if $usuario.usuario_id == $compra.usuario_id} selected {/if} value="{$usuario.usuario_id}">{$usuario.usuario_name}</option>
+                            {/foreach}
+                        </select>
                     </div>
                 </div>
                 
                 <div class="col-6">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Carro</span>
-                        <input type="text" class="form-control" placeholder="Carro" aria-label="Username" aria-describedby="basic-addon1" value="{$compra.carro_name}" name="carro_name" id="carro_name" required>
+                        <label class="input-group-text" for="carro_id">Carro</label>
+                        <select class="form-select" name="carro_id" id="carro_id" required>
+                            {foreach $carros as $carro}
+                                <option {if $carro.carro_id == $compra.carro_id} selected {/if} value="{$carro.carro_id}">{$carro.carro_name}</option>
+                            {/foreach}
+                        </select>
                     </div>
                 </div>
 

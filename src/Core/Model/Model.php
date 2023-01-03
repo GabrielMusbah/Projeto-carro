@@ -3,18 +3,27 @@
 namespace Plantae\Projeto\Core\Model;
 
 use JsonSerializable;
+use PDO;
+use Plantae\Projeto\Config\DataBase;
+use Plantae\Projeto\Core\Helpers\Orm;
 
 class Model implements JsonSerializable
 {
+    protected PDO $connection;
+
+    use Orm;
+
     public $tableName = '';
     
     protected $fillable = [];
     
     protected $attributes = [];
     
-    public function __construct($attributes)
+    public function __construct(array $attributes = [])
     {
         $this->fill($attributes);
+
+        $this->connection = DataBase::createConnection();
     }
 
     public function fill($attributes = [])
@@ -41,9 +50,26 @@ class Model implements JsonSerializable
         return $this->attributes;
     }
 
-    public function load()
-    {
-        return $this->attributes;
-    }
+    //ORM
+
+    // public function load($coluns, $where = [])
+    // {
+    //     return $this->loadOrm($this->tableName, $coluns, $where);
+    // }
+
+    // public function store()
+    // {
+    //     $this->storeOrm($this->attributes, $this->tableName);
+    // }
+
+    // public function update($where = [])
+    // {
+    //     $this->updateOrm($this->attributes, $this->tableName, $where);
+    // }
+
+    // public function delete($id)
+    // {
+    //     $this->deleteOrm($this->tableName, $id);
+    // }
 
 }
