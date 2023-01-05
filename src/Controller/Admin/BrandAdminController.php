@@ -3,7 +3,6 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Dao\BrandDao;
 use Plantae\Projeto\Model\BrandModel;
 
 class BrandAdminController extends Controller

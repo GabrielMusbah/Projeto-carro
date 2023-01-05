@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-01-03 16:44:38
+/* Smarty version 4.3.0, created on 2023-01-05 08:14:23
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/Car.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63b493b628e128_51680179',
+  'unifunc' => 'content_63b6bf1f318697_42994016',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50c4b2dc37c76127932716bd080af55481f1ded5' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Admin/Car.tpl',
-      1 => 1672661076,
+      1 => 1672920862,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,27 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63b493b628e128_51680179 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63b6bf1f318697_42994016 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_196466794763b493b628a5f1_26058873', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17153715863b6bf1f313309_58617952', 'main');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateAdminEdit.tpl");
 }
 /* {block 'main'} */
-class Block_196466794763b493b628a5f1_26058873 extends Smarty_Internal_Block
+class Block_17153715863b6bf1f313309_58617952 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_196466794763b493b628a5f1_26058873',
+    0 => 'Block_17153715863b6bf1f313309_58617952',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/opt/lampp/htdocs/Projeto-carro/vendor/smarty/smarty/libs/plugins/modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 ?>
 
     <main class="container p-0">
@@ -71,13 +72,13 @@ $_smarty_tpl->tpl_vars['item']->do_else = false;
 </th>
                                 <td class="text-center"><?php echo $_smarty_tpl->tpl_vars['item']->value['carro_name'];?>
 </td>
-                                <td class="text-center"><?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+                                <td class="text-center">$<?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['item']->value['price'],2,',','.');?>
 </td>
                                 <td class="text-center"><?php echo $_smarty_tpl->tpl_vars['item']->value['marca_name'];?>
 </td>
                                 <td class="d-flex justify-content-end">
                                     <span class="" style="white-space: nowrap;">
-                                                                                <a href="/admin/carro/edita?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['carro_id'];?>
+                                        <a href="/admin/carro/edita?id=<?php echo $_smarty_tpl->tpl_vars['item']->value['carro_id'];?>
 " class="btn btn-warning btn-sm me-2">
                                             Alterar
                                         </a>

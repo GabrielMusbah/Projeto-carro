@@ -1,10 +1,16 @@
 {
     "require": {
-        "smarty/smarty": "^4.3"
+        "smarty/smarty": "^4.3",
+        "vlucas/phpdotenv": "^5.5"
     },
     "autoload": {
         "psr-4": {
             "Plantae\\Projeto\\": "src/"
         }
+    },
+    "scripts": {
+        "migration": "php ./src/Migration/Create.php",
+        "reset": "php ./src/Migration/Reset.php",
+        "insert": "php ./src/Migration/Insert.php"
     }
 }

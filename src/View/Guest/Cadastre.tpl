@@ -7,7 +7,7 @@
         </h2>
         <div class="form-group my-4">
             <label class="text-white" for="exampleInputPassword1">Nome</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nome" name="name" id="name" required>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nome" name="usuario_name" id="usuario_name" required>
         </div>
 
         <div class="form-group my-4">

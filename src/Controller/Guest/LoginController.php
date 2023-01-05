@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         $user = new UserModel();
 
-        $userBy = $user->load(['password', 'adm'], ['email' => $email])[0];
+        $userBy = $user->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
 
         if(password_verify($senha, $userBy['password'])){
 
@@ -54,9 +54,6 @@ class LoginController extends Controller
 
     public function logout():void
     {
-        // unset($_SESSION['adminLogged']);
-        // unset($_SESSION['logged']);
-        // unset($_SESSION['user']);
-        // header('Location: /admin/login');
+        
     }
 }

@@ -7,7 +7,7 @@ use Plantae\Projeto\Core\Dao\Orm;
 use Plantae\Projeto\Dao\BuyDao;
 use Plantae\Projeto\Dao\CarDao;
 use Plantae\Projeto\Model\BuyModel;
-
+use Plantae\Projeto\Model\CarModel;
 
 class CarController extends Controller
 {
@@ -18,7 +18,7 @@ class CarController extends Controller
 
         $list = ['title' => 'Index', 'imgs' => $imgs];
 
-        $car = new CarDao();
+        $car = new CarModel();
 
 
         $listFIlter = [
@@ -62,7 +62,7 @@ class CarController extends Controller
             foreach($listFIlter as $key => $value){
                 if($_GET['filter'] == $key){
     
-                    $list['cars'] = $car->loadOrder($value['order'], $value['filter']);
+                    $list['cars'] = $car->loadOrder(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca'], $value['order'], $value['filter']);
                     $list['filter'] = $key;
 
                 }
@@ -71,7 +71,7 @@ class CarController extends Controller
 
         if(!array_key_exists('filter', $list)){
 
-            $list['cars'] = $car->load();
+            $list['cars'] = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca']);
 
             $list['filter'] = 1;
 
@@ -92,11 +92,9 @@ class CarController extends Controller
             FILTER_VALIDATE_INT
         ); 
 
-        $car = new CarDao();
+        $car = new CarModel();
 
-        $carInfo = $car->loadById($carro_id);
-
-        // dd($carInfo[0]);
+        $carInfo = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id', 'top_speed', 'acceleration', 'braking', 'traction', 'description'], ['marca'], ['carro_id' => $carro_id]);
 
         $this->renderHtml(
             'Guest/Sale.tpl',
@@ -112,15 +110,13 @@ class CarController extends Controller
             FILTER_VALIDATE_INT
         );
 
-        $car = new CarDao();
+        $car = new CarModel();
 
-        $carInfo = $car->loadById($carro_id);
+        $carPrice = $car->load(['price'], ['carro_id' => $carro_id]);
 
-        $buyInfo = new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $_SESSION['user'], 'price' => $carInfo[0]['price']]);
+        $buy = new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]);
 
-        $buy = new BuyDao();
-
-        $buy->store($buyInfo);
+        $buy->store();
 
         header('Location: /');
     }

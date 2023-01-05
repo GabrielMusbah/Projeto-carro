@@ -2,9 +2,7 @@
 
 namespace Plantae\Projeto\Controller\Admin;
 
-use Plantae\Projeto\Controller\Guest\UserController;
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Dao\UserDao;
 use Plantae\Projeto\Model\UserModel;
 
 class UserAdminController extends Controller
@@ -12,14 +10,14 @@ class UserAdminController extends Controller
 
     public function index(): void
     {
-        $user = new UserController;
+        $user = new UserModel();
 
-        $itens = $user->index();
+        $users = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm']);
+
+        $list = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
 
         if(isset($_SESSION['msg'])){
-            $list = ['title' => 'Listar Usuarios', 'itens' => $itens, 'logged' => true, 'msg' => ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']]];
-        } else {
-            $list = ['title' => 'Listar Usuarios', 'itens' => $itens, 'logged' => true];
+            $list['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
         }
 
         $this->renderHtml(
@@ -44,15 +42,15 @@ class UserAdminController extends Controller
     {
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $user = new UserDao();
+        $user = new UserModel($_POST);
 
-        $user->store(new UserModel($_POST));
+        $user->store();
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'success';
         $_SESSION['text'] = 'Usuario criado com sucesso!';
 
-        header('Location: /admin');
+        header('Location: /admin/usuario');
     }
 
 
@@ -65,9 +63,9 @@ class UserAdminController extends Controller
             FILTER_VALIDATE_INT
         );
   
-        $user = new UserDao();
+        $user = new UserModel();
 
-        $userBy = $user->load('usuario', ['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $id]);
+        $userBy = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $id]);
 
         $this->renderHtml(
             'Admin/UserEdit.tpl',
@@ -85,9 +83,9 @@ class UserAdminController extends Controller
 
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $user = new UserDao();
+        $user = new UserModel($_POST);
 
-        $user->update(new UserModel($_POST), ['usuario_id' => $usuario_id]);
+        $user->update(['usuario_id' => $usuario_id]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

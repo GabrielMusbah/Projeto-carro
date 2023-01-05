@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-27 16:16:51
+/* Smarty version 4.3.0, created on 2023-01-05 09:17:03
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Sale.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63ab52b38d0608_75545529',
+  'unifunc' => 'content_63b6cdcf27e898_74702465',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2984ca051358e109780dd3dad99f39cd8d706563' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Sale.tpl',
-      1 => 1672172209,
+      1 => 1672924620,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63ab52b38d0608_75545529 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63b6cdcf27e898_74702465 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_139656722063ab52b38c7cb4_62720012', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_149663759363b6cdcf275401_34075600', 'main');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateGuestSale.tpl");
 }
 /* {block 'main'} */
-class Block_139656722063ab52b38c7cb4_62720012 extends Smarty_Internal_Block
+class Block_149663759363b6cdcf275401_34075600 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_139656722063ab52b38c7cb4_62720012',
+    0 => 'Block_149663759363b6cdcf275401_34075600',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -206,28 +206,28 @@ $_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration 
                                 <div class="row justify-content-evenly">
 
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-secondary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="cinza">
+                                        <input class="form-check-input bg-secondary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="cinza" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-info" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul claro">
+                                        <input class="form-check-input bg-info" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul claro" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-light" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="branco">
+                                        <input class="form-check-input bg-light" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="branco" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-dark" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="preto">
+                                        <input class="form-check-input bg-dark" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="preto" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-primary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul">
+                                        <input class="form-check-input bg-primary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-danger" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="vermelho">
+                                        <input class="form-check-input bg-danger" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="vermelho" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-warning" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="amarelo">
+                                        <input class="form-check-input bg-warning" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="amarelo" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input" style="height: 40px; width: 40px; background-color: green" type="radio" name="color" id="color" value="verde">
+                                        <input class="form-check-input" style="height: 40px; width: 40px; background-color: green" type="radio" name="color" id="color" value="verde" required>
                                     </div>
                                 
                                 </div>

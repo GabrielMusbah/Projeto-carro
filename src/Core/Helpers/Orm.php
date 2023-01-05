@@ -12,20 +12,6 @@ trait Orm
         $sqlColuns = implode(', ', $coluns);
 
         //Gera um array com as condições de Where
-        if(array_key_exists('price_start', $where) && array_key_exists('price_end', $where)){
-
-            array_push($sqlWhere, "compra_price BETWEEN :price_start AND :price_end");
-
-        } elseif (array_key_exists('price_start', $where)){
-
-            array_push($sqlWhere, "compra_price > :price_start");
-
-        } elseif (array_key_exists('price_end', $where)){
-
-            array_push($sqlWhere, "compra_price < :price_end");
-
-        }
-        
         $sqlWhere = $this->where($where);
         
         //Gera um array com os valores a serem usados pelo execute
@@ -63,8 +49,10 @@ trait Orm
 
         $sqlJoin = implode(" ",$sqlJoin);
 
+
         //Gera um array com as condições de Where
         $sqlWhere = $this->where($where);
+
 
         //Gera um array com os valores a serem usados pelo execute
         $sqlExecute = [];
@@ -74,6 +62,7 @@ trait Orm
             $sqlExecute[":{$key}"] = $value;
 
         };
+        
         
         $sqlQuery = "SELECT {$sqlColuns} FROM {$this->tableName} {$sqlJoin}{$sqlWhere};";
 
@@ -201,14 +190,37 @@ trait Orm
 
         foreach($where as $key => $value){
 
-            array_push($sqlWhere, "{$key} = :{$key}");
+            if(!($key == 'price_start' || $key == 'price_end')){
+
+                array_push($sqlWhere, "{$key} = :{$key}");
+
+            }
             
         };
 
-        $sqlWhere = implode(" AND ",$sqlWhere);
+        if(array_key_exists('price_start', $where) && array_key_exists('price_end', $where)){
 
-        return ' WHERE ' . $sqlWhere;
-            
+            array_push($sqlWhere, "compra_price BETWEEN :price_start AND :price_end");
+
+        } elseif (array_key_exists('price_start', $where)){
+
+            array_push($sqlWhere, "compra_price > :price_start");
+
+        } elseif (array_key_exists('price_end', $where)){
+
+            array_push($sqlWhere, "compra_price < :price_end");
+
+        }
+
+        if(!empty($sqlWhere)){
+
+            $sqlWhere = implode(" AND ",$sqlWhere);
+
+            return ' WHERE ' . $sqlWhere;
+
+        }
+
+        return '';
  
     }
 }

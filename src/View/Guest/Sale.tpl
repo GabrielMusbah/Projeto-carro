@@ -109,28 +109,28 @@
                                 <div class="row justify-content-evenly">
 
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-secondary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="cinza">
+                                        <input class="form-check-input bg-secondary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="cinza" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-info" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul claro">
+                                        <input class="form-check-input bg-info" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul claro" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-light" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="branco">
+                                        <input class="form-check-input bg-light" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="branco" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center mb-3">
-                                        <input class="form-check-input bg-dark" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="preto">
+                                        <input class="form-check-input bg-dark" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="preto" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-primary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul">
+                                        <input class="form-check-input bg-primary" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="azul" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-danger" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="vermelho">
+                                        <input class="form-check-input bg-danger" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="vermelho" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input bg-warning" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="amarelo">
+                                        <input class="form-check-input bg-warning" style="height: 40px; width: 40px;" type="radio" name="color" id="color" value="amarelo" required>
                                     </div>
                                     <div class="col-3 d-flex justify-content-center">
-                                        <input class="form-check-input" style="height: 40px; width: 40px; background-color: green" type="radio" name="color" id="color" value="verde">
+                                        <input class="form-check-input" style="height: 40px; width: 40px; background-color: green" type="radio" name="color" id="color" value="verde" required>
                                     </div>
                                 
                                 </div>

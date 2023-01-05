@@ -32,11 +32,11 @@ class LoginAdminController extends Controller
 
         $user = new UserModel();
 
-        $userBy = $user->load(['password', 'adm'], ['email' => $email])[0];
+        $userBy = $user->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
 
         if(password_verify($senha, $userBy['password']) && $userBy['adm'] === true){
             $_SESSION['adminLogged'] = true;
-            $_SESSION['user'] = $userBy['id'];
+            $_SESSION['user'] = $userBy['usuario_id'];
             header('Location: /admin');
         } else {
             header('Location: /admin/login');

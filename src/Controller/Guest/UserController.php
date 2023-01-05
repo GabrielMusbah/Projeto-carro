@@ -12,15 +12,6 @@ class UserController extends Controller
 {
     use RenderHtml;
 
-    public function index()
-    {
-        $user = new UserDao();
-
-        $users = $user->load('usuario', ['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm']);
-
-        return $users;
-    }
-
     public function create(): void
     {
         $this->renderHtml(
@@ -33,9 +24,17 @@ class UserController extends Controller
     {
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $user = new UserDao();
+        $user = new UserModel($_POST);
 
-        $user->store(new UserModel($_POST));
+        $user->store();
+
+        $user = new UserModel();
+
+        $userBy = $user->load(['usuario_id'], ['email' => $_POST['email']])[0];
+
+        $_SESSION['logged'] = true;
+        
+        $_SESSION['user'] = $userBy['usuario_id'];
 
         header('Location: /');
     }

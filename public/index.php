@@ -2,11 +2,7 @@
 
 require('/opt/lampp/htdocs/Projeto-carro/public/Debug/vendor/autoload.php');
 
-
-
 require __DIR__ . '/../vendor/autoload.php';
-
-use Plantae\Projeto\Controller\Helpers\RenderHtml;
 
 use Plantae\Projeto\Controller\Error;
 
