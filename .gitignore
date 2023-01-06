@@ -1,4 +1,2 @@
 /vendor
 .env
-/public/assets/guest/img/uploads/brand/*
-/public/assets/guest/img/uploads/car/*
