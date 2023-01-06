@@ -12,7 +12,7 @@ class UserAdminController extends Controller
     {
         $user = new UserModel();
 
-        $users = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm']);
+        $users = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_trash' => 'false']);
 
         $list = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
 

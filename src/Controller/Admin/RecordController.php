@@ -43,8 +43,8 @@ class RecordController extends Controller
         }
 
         $buys = $buy->loadJoin(['carro_trash', 'compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'marca', 'usuario'], $where);
+
         
-        // dd(empty([]), $buys);
         $this->renderHtml(
             'Admin/RecordFilter.tpl',
             ['title' => 'Relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true]

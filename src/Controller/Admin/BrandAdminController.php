@@ -12,7 +12,7 @@ class BrandAdminController extends Controller
     {
         $brand = new BrandModel();
 
-        $brands = $brand->load(['marca_id', 'marca_trash', 'marca_name']);
+        $brands = $brand->load(['marca_id', 'marca_trash', 'marca_name'], ['marca_trash' => 'false']);
 
         $list = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true];
 

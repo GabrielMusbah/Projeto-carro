@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Controller;
+namespace Plantae\Projeto\Controller\Error;
 
 use Plantae\Projeto\Core\Controller\Controller;
 

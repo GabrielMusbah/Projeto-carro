@@ -16,8 +16,14 @@
         <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
         </div>
 
-        <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-danger">Logar</button>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                <a class="btn btn-outline-danger" href="/cadastro">Cadastre-se</a>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-danger">Logar</button>
+            </div>
         </div>
     </form>
 {/block}

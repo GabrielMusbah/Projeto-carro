@@ -1,15 +1,23 @@
 <?php
 
 require('/opt/lampp/htdocs/Projeto-carro/public/Debug/vendor/autoload.php');
-
 require __DIR__ . '/../vendor/autoload.php';
-
-use Plantae\Projeto\Controller\Error;
-
-$route = $_SERVER['PATH_INFO'] ?? '/';
-
 $routes = require __DIR__ . '/../src/Routes/Web.php';
 
+
+use Plantae\Projeto\Controller\Error\Error;
+use Plantae\Projeto\Routes\Config;
+
+
+//inicio das sessions
+session_start();
+
+
+//setando como route a roda passada no link /<PATH_INFO>
+$route = $_SERVER['PATH_INFO'] ?? '/';
+
+
+//rota de erro de pagina nao encontrada
 if(!array_key_exists($route, $routes)){
     $error = new Error;
     $error->index();
@@ -17,35 +25,18 @@ if(!array_key_exists($route, $routes)){
 }
 
 
+//controle das rotas adm/guest com login
 
-session_start();
+$configRoute = new Config($route);
 
-$listAll = ['/login', '/logar', '/cadastro', '/cadastrar', '/admin/login', '/admin/logar'];
+$r = $configRoute->route();
 
-$listGet = ['/login', '/cadastro', '/admin/login'];
-
-//Se a pessoa quem entrar em algo na parte Admin e não esta logado como adm, ele é mandado pro login adm
-if(strpos($route, 'admin') && !(strpos($route, 'login') || strpos($route, 'logar')) && !isset($_SESSION['adminLogged'])){
-    header('Location: /admin/login');
-    exit();
+if(!($r === null)){
+    header($r);
 }
 
-//se a pessoa tentar entrar em algum lugar e não esta logado ele é mandado pro /login
-if(!in_array($route, $listAll) && !isset($_SESSION['logged']) && !isset($_SESSION['adminLogged'])){
-    header('Location: /login');
-    exit();
-}
 
-if(in_array($route, $listGet) && isset($_SESSION['adminLogged'])){
-    header('Location: /admin');
-    exit();
-}
-
-if(in_array($route, $listGet) && isset($_SESSION['logged'])){
-    header('Location: /');
-    exit();
-}
-
+//sistema de controle entre as rotas e os controllers
 
 [$classControll, $function] = $routes[$route];
 

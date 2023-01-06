@@ -3,8 +3,6 @@
 namespace Plantae\Projeto\Controller\Guest;
 
 use Plantae\Projeto\Core\Helpers\RenderHtml;
-use Plantae\Projeto\Dao\UserDao;
-use Plantae\Projeto\Config\DataBase;
 use Plantae\Projeto\Core\Controller\Controller;
 use Plantae\Projeto\Model\UserModel;
 
@@ -33,7 +31,7 @@ class UserController extends Controller
         $userBy = $user->load(['usuario_id'], ['email' => $_POST['email']])[0];
 
         $_SESSION['logged'] = true;
-        
+
         $_SESSION['user'] = $userBy['usuario_id'];
 
         header('Location: /');

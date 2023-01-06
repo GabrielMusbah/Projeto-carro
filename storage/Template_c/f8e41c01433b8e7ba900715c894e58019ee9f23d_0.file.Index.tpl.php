@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-01-02 09:29:39
+/* Smarty version 4.3.0, created on 2023-01-06 14:11:18
   from '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63b2dc43338025_96246838',
+  'unifunc' => 'content_63b86446306419_35317743',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8e41c01433b8e7ba900715c894e58019ee9f23d' => 
     array (
       0 => '/opt/lampp/htdocs/Projeto-carro/src/View/Guest/Index.tpl',
-      1 => 1672666177,
+      1 => 1673028676,
       2 => 'file',
     ),
   ),
@@ -20,26 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63b2dc43338025_96246838 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63b86446306419_35317743 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_158069422863b2dc4332f128_21814004', 'main');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_165533440163b864462e2958_79842753', 'main');
 ?>
 
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Template/TemplateGuestSale.tpl");
 }
 /* {block 'main'} */
-class Block_158069422863b2dc4332f128_21814004 extends Smarty_Internal_Block
+class Block_165533440163b864462e2958_79842753 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'main' => 
   array (
-    0 => 'Block_158069422863b2dc4332f128_21814004',
+    0 => 'Block_165533440163b864462e2958_79842753',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -120,12 +120,12 @@ $_smarty_tpl->tpl_vars['car']->do_else = false;
                         </div>
                         <div class="card-body text-white">
                             <div class="row px-1">
-                                <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 d-flex align-self-center">
+                                <p class="col-sm-12 col-xl-6 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 align-self-center">
                                     <?php echo $_smarty_tpl->tpl_vars['car']->value['carro_name'];?>
 
                                 </p>
 
-                                <a class="col-sm-12 col-xl-5" href="/compra?id=<?php echo $_smarty_tpl->tpl_vars['car']->value['carro_id'];?>
+                                <a class="col-sm-12 col-xl-6" href="/compra?id=<?php echo $_smarty_tpl->tpl_vars['car']->value['carro_id'];?>
 ">
                                     <button class="button-red-white py-1 text-white" style="width: 100%;">R$ <?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['car']->value['price'],2,',','.');?>
 </button>

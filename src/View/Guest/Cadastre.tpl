@@ -25,8 +25,14 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
         </div>
 
-        <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-danger">Cadastrar</button>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                <a class="btn btn-outline-danger" href="/login">Logar-se</a>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-danger">Cadastrar</button>
+            </div>
         </div>
     </form>
 {/block}

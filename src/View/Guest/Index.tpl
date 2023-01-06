@@ -67,11 +67,11 @@
                         </div>
                         <div class="card-body text-white">
                             <div class="row px-1">
-                                <p class="col-sm-12 col-xl-7 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 d-flex align-self-center">
+                                <p class="col-sm-12 col-xl-6 px-0 m-0 text-sm-center text-xl-start pb-sm-2 pb-xl-0 align-self-center">
                                     {$car.carro_name}
                                 </p>
 
-                                <a class="col-sm-12 col-xl-5" href="/compra?id={$car.carro_id}">
+                                <a class="col-sm-12 col-xl-6" href="/compra?id={$car.carro_id}">
                                     <button class="button-red-white py-1 text-white" style="width: 100%;">R$ {$car.price|number_format:2:',':'.'}</button>
                                 </a>
                                 

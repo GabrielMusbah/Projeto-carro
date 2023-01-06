@@ -13,7 +13,7 @@ class CarAdminController extends Controller
     {  
         $car = new CarModel();
 
-        $cars = $car->loadJoin(['carro_trash', 'carro_id', 'carro_name', 'price', 'marca_name'], ['marca']);
+        $cars = $car->loadJoin(['carro_trash', 'carro_id', 'carro_name', 'price', 'marca_name'], ['marca'], ['carro_trash' => 'false']);
 
         if(isset($_SESSION['msg'])){
             $list = ['title' => 'Listar Carros', 'itens' => $cars, 'titleNav' => '- Carros', 'logged' => true, 'msg' => ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']]];
