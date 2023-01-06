@@ -3,9 +3,7 @@
 namespace Plantae\Projeto\Controller\Guest;
 
 use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Dao\Orm;
-use Plantae\Projeto\Dao\BuyDao;
-use Plantae\Projeto\Dao\CarDao;
+use Plantae\Projeto\Model\BrandModel;
 use Plantae\Projeto\Model\BuyModel;
 use Plantae\Projeto\Model\CarModel;
 
@@ -14,9 +12,13 @@ class CarController extends Controller
 
     public function index(): void
     {
-        $imgs = ['IconFerrari', 'IconLamborghini', 'IconMazda', 'IconBmw', 'IconMercedes', 'IconMaserati', 'IconJeep', 'IconVolvo', 'IconToyota'];
+        $brand = new BrandModel();
 
-        $list = ['title' => 'Index', 'imgs' => $imgs];
+        $brands = $brand->load(['marca_src'], ['marca_trash' => 'false']);
+
+        // $imgs = ['IconFerrari', 'IconLamborghini', 'IconMazda', 'IconBmw', 'IconMercedes', 'IconMaserati', 'IconJeep', 'IconVolvo', 'IconToyota']
+
+        $list = ['title' => 'Index', 'imgs' => $brands];
 
         $car = new CarModel();
 

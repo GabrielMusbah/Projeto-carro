@@ -34,7 +34,7 @@
                 <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Lugares</span>
-                        <input type="text" class="form-control" placeholder="Digite o preço" id="seat" name="seat"  aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o numero de lugares" id="seat" name="seat"  aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 

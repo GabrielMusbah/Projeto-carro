@@ -86,7 +86,7 @@ class CarAdminController extends Controller
   
         $car = new CarModel();
 
-        $carBy = $car->load(['carro_name', 'carro_id', 'price', 'top_speed', 'acceleration', 'braking', 'traction', 'description', 'seat', 'marca_id'],['carro_id'=> $id]);
+        $carBy = $car->load(['carro_name', 'carro_id', 'price', 'top_speed', 'acceleration', 'braking', 'traction', 'description', 'seat', 'marca_id', 'carro_src'],['carro_id'=> $id]);
 
         $brand = new BrandModel();
 

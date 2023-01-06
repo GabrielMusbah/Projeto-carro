@@ -31,7 +31,7 @@
                 <div class="col-6">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Preço</span>
-                        <input type="text" class="form-control" placeholder="Preco" aria-label="Username" aria-describedby="basic-addon1" value="{$compra.compra_price}" name="compra_price" id="compra_price" required>
+                        <input type="text" class="form-control" placeholder="Preço" aria-label="Username" aria-describedby="basic-addon1" value="{$compra.compra_price}" name="compra_price" id="compra_price" required>
                     </div>
                 </div>
 

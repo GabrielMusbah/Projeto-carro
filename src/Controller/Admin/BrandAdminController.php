@@ -79,7 +79,7 @@ class BrandAdminController extends Controller
 
         $brand = new BrandModel();
 
-        $brandBy = $brand->load(['marca_id', 'marca_trash', 'marca_name'], ['marca_id' => $id]);
+        $brandBy = $brand->load(['marca_id', 'marca_trash', 'marca_name', 'marca_src'], ['marca_id' => $id]);
 
         $this->renderHtml(
             'Admin/BrandEdit.tpl',

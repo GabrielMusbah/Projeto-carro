@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <img src="./assets/guest/img/uploads/car/{$car.carro_src}" class="card-img-top img-fluid px-1" style="heigth: 350px;" alt="">
+                            <img src="./assets/guest/img/uploads/car/{$car.carro_src}" class="card-img-top px-1" style="width: 350px; height: 350px; object-fit: cover;" alt="">
                         </div>
                         <div class="card-body text-white">
                             <div class="row px-1">

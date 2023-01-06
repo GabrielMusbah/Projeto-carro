@@ -11,7 +11,7 @@
                     <div class="">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Nome</span>
-                            <input type="text" class="form-control" placeholder="Username" name="marca_name" id="marca_name" aria-label="Username" aria-describedby="basic-addon1" required>
+                            <input type="text" class="form-control" placeholder="Nome da marca" name="marca_name" id="marca_name" aria-label="Username" aria-describedby="basic-addon1" required>
                         </div>
                     </div>
                 

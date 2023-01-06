@@ -1,6 +1,5 @@
 <?php
 
-require('/opt/lampp/htdocs/Projeto-carro/public/Debug/vendor/autoload.php');
 require __DIR__ . '/../vendor/autoload.php';
 $routes = require __DIR__ . '/../src/Routes/Web.php';
 

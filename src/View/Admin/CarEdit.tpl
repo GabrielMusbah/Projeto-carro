@@ -34,7 +34,7 @@
                 <div class="col-xl-3 col-md-6 col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Lugares</span>
-                        <input type="text" class="form-control" placeholder="Digite o preço" value="{$carro.seat}" id="seat" name="seat"  aria-label="Username" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Digite o numero de lugares" value="{$carro.seat}" id="seat" name="seat"  aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                 </div>
 
@@ -97,7 +97,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-12 mt-3  d-flex">
+                <div class="col-md-6 col-12 mt-3">
+                    <div class="d-flex justify-content-center mb-2">
+                        <img src="./../../assets/guest/img/uploads/car/{$carro.carro_src}" style="width: 600px; height: 400px; object-fit: cover;" alt=""> 
+                    </div>
                     <div class="p-2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
                         <label for="picCar">Imagem do carro:</label>
                         <input type="file" id="file" class="ms-2 form-control-file" name="picCar" accept="image/*" class="form-control">

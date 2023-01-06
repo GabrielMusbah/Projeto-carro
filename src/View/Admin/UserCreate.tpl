@@ -9,21 +9,21 @@
                 <div class="col-md-6 col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Nome</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="usuario_name" id="usuario_name" required>
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" name="usuario_name" id="usuario_name" required>
                     </div>
                 </div>
                 
                 <div class="col-md-6 col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Email</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="email" id="email" required>
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email" id="email" required>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-12">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Senha</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="password" id="password" required>
+                        <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" name="password" id="password" required>
                     </div>
                 </div>
 

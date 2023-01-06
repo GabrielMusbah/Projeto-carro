@@ -47,7 +47,7 @@
                         {foreach $imgs as $img}
 
                             <div class="item d-flex justify-content-center">
-                                <img src="./assets/guest/img/icon/{$img}.png" style="width: 50px;" alt="">
+                                <img src="./assets/guest/img/uploads/brand/{$img.marca_src}" style="width: 50px;" alt="">
                             </div>
 
                         {/foreach}
