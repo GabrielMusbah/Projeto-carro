@@ -2,9 +2,15 @@
 
 namespace Plantae\Projeto\Core\Controller;
 
-use Plantae\Projeto\Core\Helpers\RenderHtml;
+use Plantae\Projeto\Core\Helpers\Template;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 
 class Controller
 {
-    use RenderHtml;
+   protected $template;
+
+   public function __construct()
+   {
+        $this->template = new Template();
+   }
 }

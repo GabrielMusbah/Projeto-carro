@@ -2,20 +2,17 @@
 
 namespace Plantae\Projeto\Controller\Guest;
 
-use Plantae\Projeto\Core\Helpers\RenderHtml;
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
 use Plantae\Projeto\Model\UserModel;
 
-class UserController extends Controller
+class UserController extends Controller implements CreateCrudInterface
 {
-    use RenderHtml;
-
     public function create(): void
     {
-        $this->renderHtml(
-            'Guest/Cadastre.tpl',
-            ['title' => 'Cadastro']
-        );
+        $arrayVars = ['title' => 'Cadastro'];
+
+        $this->template->render('Guest/Cadastre.tpl', $arrayVars);
     }
 
     public function store(): void
@@ -28,13 +25,12 @@ class UserController extends Controller
 
         $user = new UserModel();
 
-        $userBy = $user->load(['usuario_id'], ['email' => $_POST['email']])[0];
+        $userByEmail = $user->load(['usuario_id'], ['email' => $_POST['email']])[0];
 
         $_SESSION['logged'] = true;
 
-        $_SESSION['user'] = $userBy['usuario_id'];
+        $_SESSION['user'] = $userByEmail['usuario_id'];
 
         header('Location: /');
     }
-
 }

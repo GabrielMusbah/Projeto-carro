@@ -3,27 +3,27 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
+use Plantae\Projeto\Core\Interfaces\DeleteCrudInterface;
+use Plantae\Projeto\Core\Interfaces\EditCrudInterface;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\UserModel;
 
-class UserAdminController extends Controller
+class UserAdminController extends Controller  implements ShowCrudInterface, CreateCrudInterface, EditCrudInterface, DeleteCrudInterface
 {
-
     public function index(): void
     {
         $user = new UserModel();
 
         $users = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_trash' => 'false']);
 
-        $list = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
+        $arrayVars = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
 
         if(isset($_SESSION['msg'])){
-            $list['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
+            $arrayVars['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
         }
 
-        $this->renderHtml(
-            'Admin/User.tpl',
-            $list
-        );
+        $this->template->render('Admin/User', $arrayVars);
 
         unset($_SESSION['msg']);
         unset($_SESSION['color']);
@@ -32,10 +32,9 @@ class UserAdminController extends Controller
 
     public function create(): void
     {
-        $this->renderHtml(
-            'Admin/UserCreate.tpl',
-            ['title' => 'Criar Usuario', 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Criar Usuario', 'logged' => true];
+
+        $this->template->render('Admin/UserCreate', $arrayVars);
     }
 
     public function store(): void
@@ -53,11 +52,9 @@ class UserAdminController extends Controller
         header('Location: /admin/usuario');
     }
 
-
-
     public function edit(): void
     {
-        $id = filter_input(
+        $usuarioId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -65,17 +62,16 @@ class UserAdminController extends Controller
   
         $user = new UserModel();
 
-        $userBy = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $id]);
+        $userBy = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $usuarioId]);
 
-        $this->renderHtml(
-            'Admin/UserEdit.tpl',
-            ['title' => 'Editar Usuario', 'logged' => true, 'usuario' => $userBy[0]]
-        );
+        $arrayVars = ['title' => 'Editar Usuario', 'logged' => true, 'usuario' => $userBy[0]];
+
+        $this->template->render('Admin/UserEdit', $arrayVars);
     }
 
     public function update(): void
     {
-        $usuario_id = filter_input(
+        $usuarioId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -85,7 +81,7 @@ class UserAdminController extends Controller
 
         $user = new UserModel($_POST);
 
-        $user->update(['usuario_id' => $usuario_id]);
+        $user->update(['usuario_id' => $usuarioId]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';
@@ -94,11 +90,9 @@ class UserAdminController extends Controller
         header('Location: /admin/usuario');
     }
 
-
-
     public function delete(): void
     {
-        $usuario_id = filter_input(
+        $usuarioId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -106,7 +100,7 @@ class UserAdminController extends Controller
   
         $user = new UserModel();
 
-        $user->delete($usuario_id);
+        $user->delete($usuarioId);
         
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'danger';

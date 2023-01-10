@@ -3,11 +3,12 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\BuyModel;
 use Plantae\Projeto\Model\CarModel;
 use Plantae\Projeto\Model\UserModel;
 
-class RecordController extends Controller
+class RecordController extends Controller  implements ShowCrudInterface
 {
     public function index(): void
     {
@@ -19,15 +20,13 @@ class RecordController extends Controller
 
         $cars = $car->load(['carro_id', 'carro_name']);
 
-        $this->renderHtml(
-            'Admin/Record.tpl',
-            ['title' => 'Filtro do relatorio', 'usuarios' => $users, 'titleNav' => '- Carros', 'logged' => true, 'carros' => $cars]
-        );
+        $arrayVars = ['title' => 'Filtro do relatorio', 'usuarios' => $users, 'titleNav' => '- Carros', 'logged' => true, 'carros' => $cars];
+
+        $this->template->render('Admin/Record', $arrayVars);
     }
 
     public function indexFilter(): void
     {
-        
         $buy = new BuyModel();
 
         $where = [];
@@ -44,10 +43,8 @@ class RecordController extends Controller
 
         $buys = $buy->loadJoin(['carro_trash', 'compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'marca', 'usuario'], $where);
 
-        
-        $this->renderHtml(
-            'Admin/RecordFilter.tpl',
-            ['title' => 'Relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true];
+
+        $this->template->render('Admin/RecordFilter', $arrayVars);
     }
 }

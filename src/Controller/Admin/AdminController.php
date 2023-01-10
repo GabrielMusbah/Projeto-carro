@@ -3,16 +3,14 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 
-class AdminController extends Controller
+class AdminController extends Controller  implements ShowCrudInterface
 {
-
     public function index(): void
     {
-        $this->renderHtml(
-            'Admin/Index.tpl',
-            ['title' => 'Admin', 'titleNav' => '', 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Admin', 'titleNav' => '', 'logged' => true];
+
+        $this->template->render('Admin/Index', $arrayVars);
     }
-    
 }

@@ -3,17 +3,17 @@
 namespace Plantae\Projeto\Controller\Guest;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\LoginInterface;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\UserModel;
 
-class LoginController extends Controller
+class LoginController extends Controller implements LoginInterface, ShowCrudInterface
 {
-
     public function index(): void
     {
-        $this->renderHtml(
-            'Guest/Login.tpl',
-            ['title' => 'Login']
-        );
+        $arrayVars = ['title' => 'Login'];
+
+        $this->template->render('Guest/Login', $arrayVars);
     }
 
     public function login(): void
@@ -32,13 +32,13 @@ class LoginController extends Controller
 
         $user = new UserModel();
 
-        $userBy = $user->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
+        $userByEmail = $user->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
 
-        if(password_verify($senha, $userBy['password'])){
+        if(password_verify($senha, $userByEmail['password'])){
 
-            $_SESSION['user'] = $userBy['usuario_id'];
+            $_SESSION['user'] = $userByEmail['usuario_id'];
 
-            if($userBy['adm'] === true){
+            if($userByEmail['adm'] === true){
                 $_SESSION['adminLogged'] = true;
                 header('Location: /admin');
             } else {
@@ -54,6 +54,6 @@ class LoginController extends Controller
 
     public function logout():void
     {
-        
+        //implementar no front
     }
 }

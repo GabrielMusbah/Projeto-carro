@@ -3,27 +3,27 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
+use Plantae\Projeto\Core\Interfaces\DeleteCrudInterface;
+use Plantae\Projeto\Core\Interfaces\EditCrudInterface;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\BrandModel;
 
-class BrandAdminController extends Controller
+class BrandAdminController extends Controller  implements ShowCrudInterface, CreateCrudInterface, EditCrudInterface, DeleteCrudInterface
 {
-
     public function index(): void
     {
         $brand = new BrandModel();
 
         $brands = $brand->load(['marca_id', 'marca_trash', 'marca_name'], ['marca_trash' => 'false']);
 
-        $list = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true];
+        $arrayVars = ['title' => 'Listar Marcas', 'itens' => $brands, 'titleNav' => '- Marcas', 'logged' => true];
 
         if(isset($_SESSION['msg'])){
-            $list['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
+            $arrayVars['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
         }
 
-        $this->renderHtml(
-            'Admin/Brand.tpl',
-            $list
-        );
+        $this->template->render('Admin/Brand', $arrayVars);
 
         unset($_SESSION['msg']);
         unset($_SESSION['color']);
@@ -32,10 +32,9 @@ class BrandAdminController extends Controller
 
     public function create(): void
     {
-        $this->renderHtml(
-            'Admin/BrandCreate.tpl',
-            ['title' => 'Criar Marca', 'titleNav' => '- Marcas', 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Criar Marca', 'titleNav' => '- Marcas', 'logged' => true];
+
+        $this->template->render('Admin/BrandCreate', $arrayVars);
     }
 
     public function store():void
@@ -47,17 +46,17 @@ class BrandAdminController extends Controller
             return;
 
 
-        $name = $_FILES['pic']['name'];
+        $imageName = $_FILES['pic']['name'];
 
-        $ext = pathinfo($name, PATHINFO_EXTENSION);
+        $ext = pathinfo($imageName, PATHINFO_EXTENSION);
 
         $dir = BrandModel::PATH;
 
-        $new_name = $_POST['marca_name'] . '.' . $ext;
+        $newName = $_POST['marca_name'] . '.' . $ext;
 
-        move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name);  
+        move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$newName);  
 
-        $brand = new BrandModel($_POST + ['marca_src' => $new_name]);
+        $brand = new BrandModel($_POST + ['marca_src' => $newName]);
 
         $brand->store();
 
@@ -71,7 +70,7 @@ class BrandAdminController extends Controller
 
     public function edit(): void
     {
-        $id = filter_input(
+        $marcaId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -79,29 +78,22 @@ class BrandAdminController extends Controller
 
         $brand = new BrandModel();
 
-        $brandBy = $brand->load(['marca_id', 'marca_trash', 'marca_name', 'marca_src'], ['marca_id' => $id]);
+        $brandById = $brand->load(['marca_id', 'marca_trash', 'marca_name', 'marca_src'], ['marca_id' => $marcaId]);
 
-        $this->renderHtml(
-            'Admin/BrandEdit.tpl',
-            ['title' => 'Editar Marca', 'titleNav' => '- Marcas', 'marca' => $brandBy[0], 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Editar Marca', 'titleNav' => '- Marcas', 'marca' => $brandById[0], 'logged' => true];
+
+        $this->template->render('Admin/BrandEdit', $arrayVars);
     }
 
     public function update(): void
     {
-        $marca_id = filter_input(
+        $marcaId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
         );
-
-        $marca_name = filter_input(
-            INPUT_POST,
-            'marca_name',
-            FILTER_DEFAULT
-        );
         
-        $carro_id = filter_input(
+        $carroId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -114,33 +106,33 @@ class BrandAdminController extends Controller
 
             $brand = new BrandModel();
 
-            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marca_id])[0]['marca_src'];    
+            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marcaId])[0]['marca_src'];    
 
             $dir = BrandModel::PATH;
 
             unlink($dir.$brandSrc);
 
-            $name = $_FILES['picBrand']['name'];
+            $imageName = $_FILES['picBrand']['name'];
 
-            $ext = pathinfo($name, PATHINFO_EXTENSION);
+            $ext = pathinfo($imageName, PATHINFO_EXTENSION);
 
-            $new_name = $_POST['marca_name'] . '.' . $ext;
+            $newName = $_POST['marca_name'] . '.' . $ext;
 
-            move_uploaded_file($_FILES['picBrand']['tmp_name'], $dir.$new_name);
+            move_uploaded_file($_FILES['picBrand']['tmp_name'], $dir.$newName);
 
-            $brandM = new BrandModel($_POST + ['marca_src' => $new_name, 'carro_id' => $carro_id, 'marca_id' => $marca_id]);
+            $brandM = new BrandModel($_POST + ['marca_src' => $newName, 'carro_id' => $carroId, 'marca_id' => $marcaId]);
 
-            $brandM->update(['marca_id' => $marca_id]);
+            $brandM->update(['marca_id' => $marcaId]);
 
         } else {
 
             $brand = new BrandModel();
 
-            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marca_id])[0]['marca_src'];   
+            $brandSrc = $brand->load(['marca_src'], ['marca_id' => $marcaId])[0]['marca_src'];   
 
-            $brandM = new BrandModel($_POST + ['marca_id' => $marca_id, 'marca_src' => $brandSrc]);
+            $brandM = new BrandModel($_POST + ['marca_id' => $marcaId, 'marca_src' => $brandSrc]);
 
-            $brandM->update(['marca_id' => $marca_id]);
+            $brandM->update(['marca_id' => $marcaId]);
             
         }
 
@@ -149,12 +141,11 @@ class BrandAdminController extends Controller
         $_SESSION['text'] = 'Marca editada com sucesso!';
 
         header('Location: /admin/marca');
-        
     }
 
     public function delete(): void
     {
-        $marca_id = filter_input(
+        $marcaId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -162,7 +153,7 @@ class BrandAdminController extends Controller
 
         $brand = new BrandModel();
 
-        $brand->delete($marca_id);
+        $brand->delete($marcaId);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'danger';

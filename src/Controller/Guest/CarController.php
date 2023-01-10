@@ -3,25 +3,23 @@
 namespace Plantae\Projeto\Controller\Guest;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\BrandModel;
 use Plantae\Projeto\Model\BuyModel;
 use Plantae\Projeto\Model\CarModel;
 
-class CarController extends Controller
+class CarController extends Controller implements ShowCrudInterface, CreateCrudInterface
 {
-
     public function index(): void
     {
         $brand = new BrandModel();
 
         $brands = $brand->load(['marca_src'], ['marca_trash' => 'false']);
 
-        // $imgs = ['IconFerrari', 'IconLamborghini', 'IconMazda', 'IconBmw', 'IconMercedes', 'IconMaserati', 'IconJeep', 'IconVolvo', 'IconToyota']
-
-        $list = ['title' => 'Index', 'imgs' => $brands];
+        $arrayVars = ['title' => 'Index', 'imgs' => $brands];
 
         $car = new CarModel();
-
 
         $listFIlter = [
             1 => [
@@ -58,37 +56,32 @@ class CarController extends Controller
             ]
         ];
 
-
         if(isset($_GET['filter'])){
 
             foreach($listFIlter as $key => $value){
                 if($_GET['filter'] == $key){
     
-                    $list['cars'] = $car->loadOrder(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca'], $value['order'], $value['filter']);
-                    $list['filter'] = $key;
+                    $arrayVars['cars'] = $car->loadOrder(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca'], $value['order'], $value['filter']);
+                    $arrayVars['filter'] = $key;
 
                 }
             }
         }
 
-        if(!array_key_exists('filter', $list)){
+        if(!array_key_exists('filter', $arrayVars)){
 
-            $list['cars'] = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca']);
+            $arrayVars['cars'] = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca']);
 
-            $list['filter'] = 1;
+            $arrayVars['filter'] = 1;
 
         }
 
-
-        $this->renderHtml(
-            'Guest/Index.tpl',
-            $list
-        );
+        $this->template->render('Guest/Index', $arrayVars);
     }
 
     public function create(): void
     {
-        $carro_id = filter_input(
+        $carroId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -96,17 +89,16 @@ class CarController extends Controller
 
         $car = new CarModel();
 
-        $carInfo = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id', 'top_speed', 'acceleration', 'braking', 'traction', 'description'], ['marca'], ['carro_id' => $carro_id]);
+        $carInfo = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id', 'top_speed', 'acceleration', 'braking', 'traction', 'description'], ['marca'], ['carro_id' => $carroId]);
 
-        $this->renderHtml(
-            'Guest/Sale.tpl',
-            ['title' => $carInfo[0]['carro_name'], 'car' => $carInfo[0]]
-        );
+        $arrayVars = ['title' => $carInfo[0]['carro_name'], 'car' => $carInfo[0]];
+
+        $this->template->render('Guest/Sale', $arrayVars);
     }
 
     public function store(): void
     {
-        $carro_id = filter_input(
+        $carroId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
@@ -114,13 +106,12 @@ class CarController extends Controller
 
         $car = new CarModel();
 
-        $carPrice = $car->load(['price'], ['carro_id' => $carro_id]);
+        $carPrice = $car->load(['price'], ['carro_id' => $carroId]);
 
-        $buy = new BuyModel($_POST + ['carro_id' => $carro_id, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]);
+        $buy = new BuyModel($_POST + ['carro_id' => $carroId, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]);
 
         $buy->store();
 
         header('Location: /');
     }
-
 }

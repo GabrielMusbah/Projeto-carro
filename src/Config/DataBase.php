@@ -4,13 +4,6 @@ namespace Plantae\Projeto\Config;
 
 use PDO;
 
-require __DIR__ . '/../../vendor/autoload.php';
-
-use Dotenv\Dotenv;
-
-$dotenv = Dotenv::createImmutable( __DIR__ . '/../../' ); 
-$dotenv->load();
-
 class DataBase
 {
     public static function createConnection(): PDO

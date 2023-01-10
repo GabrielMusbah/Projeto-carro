@@ -9,9 +9,7 @@
         }
     },
     "scripts": {
-        "migration": "php ./src/Migration/Create.php",
-        "reset": "php ./src/Migration/Reset.php",
-        "insert": "php ./src/Migration/Insert.php",
+        "artisan": "php ./src/Config/Artisan.php",
         "server": "php -S localhost:3000 -t public"
     }
 }

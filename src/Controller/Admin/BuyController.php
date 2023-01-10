@@ -3,37 +3,36 @@
 namespace Plantae\Projeto\Controller\Admin;
 
 use Plantae\Projeto\Core\Controller\Controller;
+use Plantae\Projeto\Core\Interfaces\EditCrudInterface;
+use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
 use Plantae\Projeto\Model\BuyModel;
 use Plantae\Projeto\Model\CarModel;
 use Plantae\Projeto\Model\UserModel;
 
-class BuyController extends Controller
+class BuyController extends Controller  implements ShowCrudInterface, EditCrudInterface
 {
-
     public function index(): void
     { 
         $buy = new BuyModel();
 
         $buys = $buy->loadJoin(['compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'usuario']);
 
-        $this->renderHtml(
-            'Admin/Buy.tpl',
-            ['title' => 'Compras', 'itens' => $buys, 'titleNav' => '- Carros', 'logged' => true]
-        );
+        $arrayVars = ['title' => 'Compras', 'itens' => $buys, 'titleNav' => '- Carros', 'logged' => true];
+
+        $this->template->render('Admin/Buy', $arrayVars);
     }
 
     public function edit(): void
     {
-        $id = filter_input(
+        $compraId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
         );
  
-
         $buy = new BuyModel();
 
-        $buyBy = $buy->loadJoin(['compra_id', 'usuario_name', 'usuario_id', 'carro_name', 'color', 'compra_price', 'carro_id'], ['carro', 'usuario'], ['compra_id' => $id]);
+        $buyBy = $buy->loadJoin(['compra_id', 'usuario_name', 'usuario_id', 'carro_name', 'color', 'compra_price', 'carro_id'], ['carro', 'usuario'], ['compra_id' => $compraId]);
 
         $car = new CarModel();
 
@@ -43,25 +42,22 @@ class BuyController extends Controller
 
         $users = $user->load(['usuario_name', 'usuario_id']);
 
-        $this->renderHtml(
-            'Admin/BuyEdit.tpl',
-            ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0], 'carros' => $cars, 'usuarios' => $users]
-        );
+        $arrayVars = ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0], 'carros' => $cars, 'usuarios' => $users];
+
+        $this->template->render('Admin/BuyEdit.tpl', $arrayVars);
     }
 
-    public function update(): void //PAREI AKIIIIIIIIIIIIIIIII PAE
+    public function update(): void
     {
-        $compra_id = filter_input(
+        $compraId = filter_input(
             INPUT_GET,
             'id',
             FILTER_VALIDATE_INT
         );
 
-        
         $buy = new BuyModel($_POST);
 
-        $buy->update(['compra_id' => $compra_id]);
-
+        $buy->update(['compra_id' => $compraId]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';
@@ -69,5 +65,4 @@ class BuyController extends Controller
 
         header('Location: /admin/compra');
     }
-
 }
