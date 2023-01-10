@@ -1,7 +1,11 @@
 # Projeto-carro
 
 
-- Pra inciar o banco é so configura no .env e usar o: ` composer run artisan migration `
+- Configura o banco no .env
+
+- Para criar a data base: ` composer run artisan creatDataBase `
+
+- Para criar as tebelas: ` composer run artisan creatTable `
 
 - Adicionar uma conta adm é so usar: ` composer run artisan insert name email senha `
 
