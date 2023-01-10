@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Config;
+namespace Plantae\Legendary\Config;
 
 use Dotenv\Dotenv;
 

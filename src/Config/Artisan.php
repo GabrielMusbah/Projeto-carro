@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-use Plantae\Projeto\Core\Migration\Migration;
+use Plantae\Legendary\Core\Migration\Migration;
 
 $migration = new Migration();
 

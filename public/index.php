@@ -1,11 +1,14 @@
 <?php
 
+//usado pra debugar
+require __DIR__ . '/Debug/vendor/autoload.php';
+
 require __DIR__ . '/../vendor/autoload.php';
 $routes = require __DIR__ . '/../src/Routes/Web.php';
 
-use Plantae\Projeto\Config\DotenvConfig;
-use Plantae\Projeto\Controller\Error\ErrorController;
-use Plantae\Projeto\Routes\Config;
+use Plantae\Legendary\Config\DotenvConfig;
+use Plantae\Legendary\Controller\Error\ErrorController;
+use Plantae\Legendary\Routes\Config;
 
 //setando globalmente o .env
 $dotenv = new DotenvConfig();

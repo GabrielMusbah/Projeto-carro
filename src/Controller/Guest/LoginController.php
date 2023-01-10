@@ -1,11 +1,11 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Guest;
+namespace Plantae\Legendary\Controller\Guest;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\LoginInterface;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
-use Plantae\Projeto\Model\UserModel;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\LoginInterface;
+use Plantae\Legendary\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Model\UserModel;
 
 class LoginController extends Controller implements LoginInterface, ShowCrudInterface
 {

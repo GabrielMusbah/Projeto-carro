@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Routes;
+namespace Plantae\Legendary\Routes;
 
 class Config
 {

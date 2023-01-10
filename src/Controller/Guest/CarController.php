@@ -1,13 +1,13 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Guest;
+namespace Plantae\Legendary\Controller\Guest;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
-use Plantae\Projeto\Model\BrandModel;
-use Plantae\Projeto\Model\BuyModel;
-use Plantae\Projeto\Model\CarModel;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\CreateCrudInterface;
+use Plantae\Legendary\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Model\BrandModel;
+use Plantae\Legendary\Model\BuyModel;
+use Plantae\Legendary\Model\CarModel;
 
 class CarController extends Controller implements ShowCrudInterface, CreateCrudInterface
 {
@@ -93,7 +93,7 @@ class CarController extends Controller implements ShowCrudInterface, CreateCrudI
         $carPrice = (new CarModel())->load(['price'], ['carro_id' => $carroId]);
 
         $buy = (new BuyModel($_POST + ['carro_id' => $carroId, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]))->store();
-        
+
         header('Location: /');
     }
 }

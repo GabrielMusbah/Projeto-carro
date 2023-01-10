@@ -1,9 +1,9 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Admin;
+namespace Plantae\Legendary\Controller\Admin;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\ShowCrudInterface;
 
 class AdminController extends Controller  implements ShowCrudInterface
 {

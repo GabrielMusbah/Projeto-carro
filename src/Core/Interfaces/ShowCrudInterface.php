@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Core\Interfaces;
+namespace Plantae\Legendary\Core\Interfaces;
 
 interface ShowCrudInterface
 {

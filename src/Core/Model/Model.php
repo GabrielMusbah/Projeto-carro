@@ -1,11 +1,11 @@
 <?php
 
-namespace Plantae\Projeto\Core\Model;
+namespace Plantae\Legendary\Core\Model;
 
 use JsonSerializable;
 use PDO;
-use Plantae\Projeto\Config\DataBase;
-use Plantae\Projeto\Core\Helpers\Orm;
+use Plantae\Legendary\Config\DataBase;
+use Plantae\Legendary\Core\Helpers\Orm;
 
 class Model implements JsonSerializable
 {

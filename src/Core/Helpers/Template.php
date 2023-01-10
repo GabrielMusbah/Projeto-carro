@@ -1,6 +1,6 @@
 <?php
 
-namespace Plantae\Projeto\Core\Helpers;
+namespace Plantae\Legendary\Core\Helpers;
 
 use Smarty;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Error;
+namespace Plantae\Legendary\Controller\Error;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\ShowCrudInterface;
 
 class ErrorController  extends Controller  implements ShowCrudInterface
 {

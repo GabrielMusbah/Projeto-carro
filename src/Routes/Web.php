@@ -1,12 +1,12 @@
 <?php
 
-use Plantae\Projeto\Controller\Guest\ {
+use Plantae\Legendary\Controller\Guest\ {
     UserController,
     CarController,
     LoginController
 };
 
-use Plantae\Projeto\Controller\Admin\ {
+use Plantae\Legendary\Controller\Admin\ {
     AdminController,
     CarAdminController,
     BrandAdminController,

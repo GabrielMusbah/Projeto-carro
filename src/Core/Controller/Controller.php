@@ -1,9 +1,8 @@
 <?php
 
-namespace Plantae\Projeto\Core\Controller;
+namespace Plantae\Legendary\Core\Controller;
 
-use Plantae\Projeto\Core\Helpers\Template;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Core\Helpers\Template;
 
 class Controller
 {

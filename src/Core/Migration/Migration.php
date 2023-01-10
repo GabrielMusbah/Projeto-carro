@@ -1,9 +1,9 @@
 <?php
 
-namespace Plantae\Projeto\Core\Migration;
+namespace Plantae\Legendary\Core\Migration;
 
 use PDO;
-use Plantae\Projeto\Config\DotenvConfig;
+use Plantae\Legendary\Config\DotenvConfig;
 
 
 class Migration

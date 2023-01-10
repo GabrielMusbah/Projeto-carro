@@ -1,13 +1,13 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Admin;
+namespace Plantae\Legendary\Controller\Admin;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
-use Plantae\Projeto\Core\Interfaces\DeleteCrudInterface;
-use Plantae\Projeto\Core\Interfaces\EditCrudInterface;
-use Plantae\Projeto\Core\Interfaces\ShowCrudInterface;
-use Plantae\Projeto\Model\UserModel;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\CreateCrudInterface;
+use Plantae\Legendary\Core\Interfaces\DeleteCrudInterface;
+use Plantae\Legendary\Core\Interfaces\EditCrudInterface;
+use Plantae\Legendary\Core\Interfaces\ShowCrudInterface;
+use Plantae\Legendary\Model\UserModel;
 
 class UserAdminController extends Controller  implements ShowCrudInterface, CreateCrudInterface, EditCrudInterface, DeleteCrudInterface
 {

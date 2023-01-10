@@ -1,10 +1,10 @@
 <?php
 
-namespace Plantae\Projeto\Controller\Guest;
+namespace Plantae\Legendary\Controller\Guest;
 
-use Plantae\Projeto\Core\Controller\Controller;
-use Plantae\Projeto\Core\Interfaces\CreateCrudInterface;
-use Plantae\Projeto\Model\UserModel;
+use Plantae\Legendary\Core\Controller\Controller;
+use Plantae\Legendary\Core\Interfaces\CreateCrudInterface;
+use Plantae\Legendary\Model\UserModel;
 
 class UserController extends Controller implements CreateCrudInterface
 {

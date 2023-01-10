@@ -1,7 +1,7 @@
 <?php
 
-namespace Plantae\Projeto\Model;
-use Plantae\Projeto\Core\Model\Model;
+namespace Plantae\Legendary\Model;
+use Plantae\Legendary\Core\Model\Model;
 
 class BuyModel extends Model
 {
