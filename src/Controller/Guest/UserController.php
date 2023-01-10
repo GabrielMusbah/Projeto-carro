@@ -12,14 +12,14 @@ class UserController extends Controller implements CreateCrudInterface
     {
         $arrayVars = ['title' => 'Cadastro'];
 
-        $this->template->render('Guest/Cadastre.tpl', $arrayVars);
+        $this->template->render('Guest/Cadastre', $arrayVars);
     }
 
     public function store(): void
     {
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $user = new UserModel($_POST);
+        $user = new UserModel($_POST + ['adm' => 'false']);
 
         $user->store();
 
