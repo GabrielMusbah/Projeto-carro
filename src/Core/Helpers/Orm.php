@@ -34,7 +34,7 @@ trait Orm
         return $loadList;
     }
 
-    public function loadJoin(array $coluns, array $join, array $where = [])
+    public function loadJoin(array $coluns, array $join, array $where = []): array
     {
         //Gera uma string das colunas que devem ser puxadas do BD
         $sqlColuns = implode(', ', $coluns);

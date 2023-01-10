@@ -11,7 +11,7 @@ class Config
         $this->route = $route;
     }
 
-    public function route()
+    public function route(): string
     {
         $logged = isset($_SESSION['logged']);
         $AdminLogged = isset($_SESSION['adminLogged']);

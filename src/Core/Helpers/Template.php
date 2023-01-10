@@ -18,6 +18,7 @@ class Template
         $this->smarty->setConfigDir('./Config');
 
     }
+    
     public function render(string $routeTemplate, array $arrayVars = []): void
     {
 
