@@ -13,13 +13,9 @@ class CarController extends Controller implements ShowCrudInterface, CreateCrudI
 {
     public function index(): void
     {
-        $brand = new BrandModel();
+        $brands = (new BrandModel())->load(['marca_src'], ['marca_trash' => 'false']);
 
-        $brands = $brand->load(['marca_src'], ['marca_trash' => 'false']);
-
-        $arrayVars = ['title' => 'Index', 'imgs' => $brands];
-
-        $car = new CarModel();
+        $templateVars = ['title' => 'Index', 'imgs' => $brands];
 
         $listFIlter = [
             1 => [
@@ -61,57 +57,43 @@ class CarController extends Controller implements ShowCrudInterface, CreateCrudI
             foreach($listFIlter as $key => $value){
                 if($_GET['filter'] == $key){
     
-                    $arrayVars['cars'] = $car->loadOrder(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca'], $value['order'], $value['filter']);
-                    $arrayVars['filter'] = $key;
+                    $templateVars['cars'] = (new CarModel())->loadOrder(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca'], $value['order'], $value['filter']);
+                    $templateVars['filter'] = $key;
 
                 }
             }
         }
 
-        if(!array_key_exists('filter', $arrayVars)){
+        if(!array_key_exists('filter', $templateVars)){
 
-            $arrayVars['cars'] = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca']);
+            $templateVars['cars'] = (new CarModel())->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id'], ['marca']);
 
-            $arrayVars['filter'] = 1;
+            $templateVars['filter'] = 1;
 
         }
 
-        $this->template->render('Guest/Index', $arrayVars);
+        $this->template->render('Guest/Index', $templateVars);
     }
 
     public function create(): void
     {
-        $carroId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        ); 
+        $carroId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT); 
 
-        $car = new CarModel();
+        $carInfo = (new CarModel())->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id', 'top_speed', 'acceleration', 'braking', 'traction', 'description'], ['marca'], ['carro_id' => $carroId]);
 
-        $carInfo = $car->loadJoin(['carro_name', 'marca_name', 'marca_src', 'seat', 'price', 'carro_src', 'carro_id', 'top_speed', 'acceleration', 'braking', 'traction', 'description'], ['marca'], ['carro_id' => $carroId]);
+        $templateVars = ['title' => $carInfo[0]['carro_name'], 'car' => $carInfo[0]];
 
-        $arrayVars = ['title' => $carInfo[0]['carro_name'], 'car' => $carInfo[0]];
-
-        $this->template->render('Guest/Sale', $arrayVars);
+        $this->template->render('Guest/Sale', $templateVars);
     }
 
     public function store(): void
     {
-        $carroId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
+        $carroId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $car = new CarModel();
+        $carPrice = (new CarModel())->load(['price'], ['carro_id' => $carroId]);
 
-        $carPrice = $car->load(['price'], ['carro_id' => $carroId]);
-
-        $buy = new BuyModel($_POST + ['carro_id' => $carroId, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]);
-
-        $buy->store();
-
+        $buy = (new BuyModel($_POST + ['carro_id' => $carroId, 'usuario_id' => $_SESSION['user'], 'compra_price' => $carPrice[0]['price']]))->store();
+        
         header('Location: /');
     }
 }

@@ -11,28 +11,18 @@ class LoginController extends Controller implements LoginInterface, ShowCrudInte
 {
     public function index(): void
     {
-        $arrayVars = ['title' => 'Login'];
+        $templateVars = ['title' => 'Login'];
 
-        $this->template->render('Guest/Login', $arrayVars);
+        $this->template->render('Guest/Login', $templateVars);
     }
 
     public function login(): void
     {
-        $email = filter_input(
-            INPUT_POST,
-            'email',
-            FILTER_VALIDATE_EMAIL
-        );
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     
-        $senha = filter_input(
-            INPUT_POST,
-            'password',
-            FILTER_DEFAULT
-        );
+        $senha = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 
-        $user = new UserModel();
-
-        $userByEmail = $user->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
+        $userByEmail = (new UserModel())->load(['password', 'adm', 'usuario_id'], ['email' => $email])[0];
 
         if(password_verify($senha, $userByEmail['password'])){
 

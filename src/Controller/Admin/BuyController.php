@@ -17,47 +17,31 @@ class BuyController extends Controller  implements ShowCrudInterface, EditCrudIn
 
         $buys = $buy->loadJoin(['compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'usuario']);
 
-        $arrayVars = ['title' => 'Compras', 'itens' => $buys, 'titleNav' => '- Carros', 'logged' => true];
+        $templateVars = ['title' => 'Compras', 'itens' => $buys, 'titleNav' => '- Carros', 'logged' => true];
 
-        $this->template->render('Admin/Buy', $arrayVars);
+        $this->template->render('Admin/Buy', $templateVars);
     }
 
     public function edit(): void
     {
-        $compraId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
- 
-        $buy = new BuyModel();
+        $compraId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $buyBy = $buy->loadJoin(['compra_id', 'usuario_name', 'usuario_id', 'carro_name', 'color', 'compra_price', 'carro_id'], ['carro', 'usuario'], ['compra_id' => $compraId]);
+        $buyBy = (new BuyModel())->loadJoin(['compra_id', 'usuario_name', 'usuario_id', 'carro_name', 'color', 'compra_price', 'carro_id'], ['carro', 'usuario'], ['compra_id' => $compraId]);
 
-        $car = new CarModel();
+        $cars = (new CarModel())->load(['carro_name', 'carro_id']);
 
-        $cars = $car->load(['carro_name', 'carro_id']);
+        $users = (new UserModel())->load(['usuario_name', 'usuario_id']);
 
-        $user = new UserModel();
+        $templateVars = ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0], 'carros' => $cars, 'usuarios' => $users];
 
-        $users = $user->load(['usuario_name', 'usuario_id']);
-
-        $arrayVars = ['title' => 'Editar Compra', 'logged' => true, 'compra' => $buyBy[0], 'carros' => $cars, 'usuarios' => $users];
-
-        $this->template->render('Admin/BuyEdit.tpl', $arrayVars);
+        $this->template->render('Admin/BuyEdit.tpl', $templateVars);
     }
 
     public function update(): void
     {
-        $compraId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
+        $compraId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $buy = new BuyModel($_POST);
-
-        $buy->update(['compra_id' => $compraId]);
+        $buy = (new BuyModel($_POST))->update(['compra_id' => $compraId]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';

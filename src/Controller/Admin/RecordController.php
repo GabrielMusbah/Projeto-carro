@@ -12,23 +12,17 @@ class RecordController extends Controller  implements ShowCrudInterface
 {
     public function index(): void
     {
-        $user = new UserModel();
+        $users = (new UserModel())->load(['usuario_id', 'usuario_name']);
 
-        $users = $user->load(['usuario_id', 'usuario_name']);
+        $cars = (new CarModel())->load(['carro_id', 'carro_name']);
 
-        $car = new CarModel();
+        $templateVars = ['title' => 'Filtro do relatorio', 'usuarios' => $users, 'titleNav' => '- Carros', 'logged' => true, 'carros' => $cars];
 
-        $cars = $car->load(['carro_id', 'carro_name']);
-
-        $arrayVars = ['title' => 'Filtro do relatorio', 'usuarios' => $users, 'titleNav' => '- Carros', 'logged' => true, 'carros' => $cars];
-
-        $this->template->render('Admin/Record', $arrayVars);
+        $this->template->render('Admin/Record', $templateVars);
     }
 
     public function indexFilter(): void
     {
-        $buy = new BuyModel();
-
         $where = [];
 
         $list = ['carro_id', 'usuario_id', 'price_start', 'price_end'];
@@ -41,10 +35,10 @@ class RecordController extends Controller  implements ShowCrudInterface
 
         }
 
-        $buys = $buy->loadJoin(['carro_trash', 'compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'marca', 'usuario'], $where);
+        $buys = (new BuyModel())->loadJoin(['carro_trash', 'compra_id', 'usuario_name', 'carro_name', 'color', 'compra_price'], ['carro', 'marca', 'usuario'], $where);
 
-        $arrayVars = ['title' => 'Relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true];
+        $templateVars = ['title' => 'Relatorio', 'itens' => $buys, 'titleNav' => '- Relatorio', 'logged' => true];
 
-        $this->template->render('Admin/RecordFilter', $arrayVars);
+        $this->template->render('Admin/RecordFilter', $templateVars);
     }
 }

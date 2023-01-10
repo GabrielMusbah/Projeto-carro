@@ -9,8 +9,8 @@ class ErrorController  extends Controller  implements ShowCrudInterface
 {
     public function index(): void
     {
-        $$arrayVars = ['title' => 'Erro 404'];
+        $templateVars = ['title' => 'Erro 404'];
 
-        $this->template->render('Error/404.tpl', $arrayVars);
+        $this->template->render('Error/404', $templateVars);
     }
 }

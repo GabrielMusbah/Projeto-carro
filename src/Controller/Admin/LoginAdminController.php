@@ -11,24 +11,24 @@ class LoginAdminController extends Controller implements LoginInterface, ShowCru
 {
     public function index(): void
     {
-        $arrayVars = ['title' => 'Login', 'titleNav' => '- Login', 'logged' => false];
+        $templateVars = ['title' => 'Login', 'titleNav' => '- Login', 'logged' => false];
 
-        $this->template->render('Admin/Login', $arrayVars);
+        if(isset($_SESSION['msg'])){
+            $templateVars['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
+
+            unset($_SESSION['msg']);
+            unset($_SESSION['color']);
+            unset($_SESSION['text']);
+        }
+
+        $this->template->render('Admin/Login', $templateVars);
     }
 
     public function login(): void
     {
-        $email = filter_input(
-            INPUT_POST,
-            'email',
-            FILTER_VALIDATE_EMAIL
-        );
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     
-        $senha = filter_input(
-            INPUT_POST,
-            'password',
-            FILTER_DEFAULT
-        );
+        $senha = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
 
         $user = new UserModel();
 
@@ -39,6 +39,9 @@ class LoginAdminController extends Controller implements LoginInterface, ShowCru
             $_SESSION['user'] = $userByEmail['usuario_id'];
             header('Location: /admin');
         } else {
+            $_SESSION['msg'] = true;
+            $_SESSION['color'] = 'danger';
+            $_SESSION['text'] = 'A senha ou email estão errados!';
             header('Location: /admin/login');
         }
     }

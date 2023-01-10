@@ -13,28 +13,26 @@ class UserAdminController extends Controller  implements ShowCrudInterface, Crea
 {
     public function index(): void
     {
-        $user = new UserModel();
+        $users = (new UserModel())->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_trash' => 'false']);
 
-        $users = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_trash' => 'false']);
-
-        $arrayVars = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
+        $templateVars = ['title' => 'Listar Usuarios', 'itens' => $users, 'logged' => true];
 
         if(isset($_SESSION['msg'])){
-            $arrayVars['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
+            $templateVars['msg'] = ['msg' => $_SESSION['msg'], 'color' => $_SESSION['color'], 'text' => $_SESSION['text']];
+
+            unset($_SESSION['msg']);
+            unset($_SESSION['color']);
+            unset($_SESSION['text']);
         }
 
-        $this->template->render('Admin/User', $arrayVars);
-
-        unset($_SESSION['msg']);
-        unset($_SESSION['color']);
-        unset($_SESSION['text']);
+        $this->template->render('Admin/User', $templateVars);
     }
 
     public function create(): void
     {
-        $arrayVars = ['title' => 'Criar Usuario', 'logged' => true];
+        $templateVars = ['title' => 'Criar Usuario', 'logged' => true];
 
-        $this->template->render('Admin/UserCreate', $arrayVars);
+        $this->template->render('Admin/UserCreate', $templateVars);
     }
 
     public function store(): void
@@ -54,34 +52,22 @@ class UserAdminController extends Controller  implements ShowCrudInterface, Crea
 
     public function edit(): void
     {
-        $usuarioId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
-  
-        $user = new UserModel();
+        $usuarioId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $userBy = $user->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $usuarioId]);
+        $userBy = (new UserModel())->load(['usuario_trash', 'usuario_id', 'usuario_name', 'email', 'adm'], ['usuario_id' => $usuarioId]);
 
-        $arrayVars = ['title' => 'Editar Usuario', 'logged' => true, 'usuario' => $userBy[0]];
+        $templateVars = ['title' => 'Editar Usuario', 'logged' => true, 'usuario' => $userBy[0]];
 
-        $this->template->render('Admin/UserEdit', $arrayVars);
+        $this->template->render('Admin/UserEdit', $templateVars);
     }
 
     public function update(): void
     {
-        $usuarioId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
+        $usuarioId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
 
-        $user = new UserModel($_POST);
-
-        $user->update(['usuario_id' => $usuarioId]);
+        $user = (new UserModel($_POST))->update(['usuario_id' => $usuarioId]);
 
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'secondary';
@@ -92,15 +78,9 @@ class UserAdminController extends Controller  implements ShowCrudInterface, Crea
 
     public function delete(): void
     {
-        $usuarioId = filter_input(
-            INPUT_GET,
-            'id',
-            FILTER_VALIDATE_INT
-        );
+        $usuarioId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
   
-        $user = new UserModel();
-
-        $user->delete($usuarioId);
+        $user = (new UserModel())->delete($usuarioId);
         
         $_SESSION['msg'] = true;
         $_SESSION['color'] = 'danger';

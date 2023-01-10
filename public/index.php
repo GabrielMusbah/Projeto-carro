@@ -3,8 +3,6 @@
 require __DIR__ . '/../vendor/autoload.php';
 $routes = require __DIR__ . '/../src/Routes/Web.php';
 
-require __DIR__ . '/Debug/vendor/autoload.php';
-
 use Plantae\Projeto\Config\DotenvConfig;
 use Plantae\Projeto\Controller\Error\ErrorController;
 use Plantae\Projeto\Routes\Config;
