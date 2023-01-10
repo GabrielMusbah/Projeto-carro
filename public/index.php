@@ -39,5 +39,5 @@ if(!($configRoute->route() === null)){
 
 $controll = new $classControll;
 
-$controll->$function();
+$controll->{$function}();
 

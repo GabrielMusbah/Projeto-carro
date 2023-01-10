@@ -8,4 +8,4 @@ $migration = new Migration();
 
 $function = $argv[1];
 
-$migration->$function($argv);
+$migration->{$function}($argv);
