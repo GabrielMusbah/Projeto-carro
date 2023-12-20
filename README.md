@@ -1,6 +1,10 @@
 # Projeto Carro - Site de Loja de Veículos (E-commerce) em PHP
 
-Este é um projeto PHP para um site de loja de veículos (ecommerce) com um painel de administração, sistema de login para administradores e clientes. O projeto utiliza PHP puro e Smarty como framework de template para gerenciar a criação das telas.
+Este projeto PHP foi desenvolvido para criar um site de loja de veículos (ecommerce) com funcionalidades avançadas, incluindo um painel de administração e sistemas de login separados para administradores e clientes. A estrutura do código segue o padrão de arquitetura MVC (Model-View-Controller), proporcionando organização e escalabilidade.
+
+No desenvolvimento, optou-se por utilizar PHP puro, garantindo uma implementação mais leve e flexível, sem depender de frameworks específicos. O Smarty Framework foi adotado como um sistema de template para gerenciar a criação das telas HTML. Essa escolha visa separar claramente a lógica de apresentação do código PHP, facilitando a manutenção e a compreensão do código.
+
+A camada de acesso a dados é implementada utilizando o PDO (PHP Data Objects), uma extensão do PHP que oferece uma interface consistente para interagir com diferentes sistemas de gerenciamento de banco de dados. Isso não apenas melhora a segurança da aplicação, mas também permite uma fácil migração entre diferentes bancos de dados.
 
 ## Configuração do Banco de Dados
 
